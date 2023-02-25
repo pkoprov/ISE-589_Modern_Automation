@@ -1,0 +1,57 @@
+PROGRAM Prog1
+#info= QLD
+BOF
+
+
+(**)
+
+SOR  [0,1] (**) (**)  XIC  [1,0] (*Motor_Start*) (**)  XIO  [2,0] (*motor_interupt*) (**)  OTE  [3,0] (*_IO_EM_DO_00*) (*Motor*)
+EOR [4,0]
+
+
+(**)
+
+SOR  [0,3] (**) (**)  XIC  [1,0] (*Motor_direction*) (**)  OTE  [2,0] (*_IO_EM_DO_01*) (*Direction*)
+EOR [3,0]
+
+
+(**)
+
+SOR  [0,5] (**) (**)  FB  [1,0] (*=*) (*5*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*Speed_control*) (**)  , (*i2:*)(*Speed_low*) (**) ; (*o1:*)(**) (**) )  FB  [4,0] (***) (*7*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*Cycle*) (**)  , (*i2:*)(*0.1*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*DutyCycle*) (**) )
+EOR [7,0]
+
+
+(**)
+
+SOR  [0,9] (**) (**)  FB  [1,0] (*=*) (*5*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*Speed_control*) (**)  , (*i2:*)(*Speed_medium*) (**) ; (*o1:*)(**) (**) )  FB  [4,0] (***) (*7*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*Cycle*) (**)  , (*i2:*)(*0.5*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*DutyCycle*) (**) )
+EOR [7,0]
+
+
+(**)
+
+SOR  [0,13] (**) (**)  FB  [1,0] (*=*) (*5*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*Speed_control*) (**)  , (*i2:*)(*Speed_high*) (**) ; (*o1:*)(**) (**) )  FB  [4,0] (***) (*7*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*Cycle*) (**)  , (*i2:*)(*1*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*DutyCycle*) (**) )
+EOR [7,0]
+
+
+(**)
+
+SOR  [0,17] (**) (**)  FB  [1,0] (*ANY_TO_TIME*) (*8*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*DutyCycle*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*duty_cycle_ms*) (**) )
+EOR [4,0]
+
+
+(**)
+
+SOR  [0,20] (**) (**)  FB  [1,0] (*-*) (*4*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*Cycle*) (**)  , (*i2:*)(*DutyCycle*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*OffDelay*) (**) )
+EOR [4,0]
+
+
+(**)
+
+SOR  [0,24] (**) (**)  XIC  [1,0] (*_IO_EM_DO_00*) (*Motor*)  FB  [2,0] (*TONOFF*) (*TONOFF_1*) ( (*IN:*)(**) (**)  , (*PT:*)(*duty_cycle_ms*) (**)  , (*PTOF:*)(*OffDelay*) (**) ; (*Q:*)(**) (**)  , (*ET:*)(**) (**) )  OTE  [5,0] (*motor_interupt*) (**)
+EOR [6,0]
+EOF
+#end_info
+#info= ID_MAX
+NextId=8
+#end_info
+END_PROGRAM
