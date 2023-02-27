@@ -23,13 +23,13 @@ EOR [7,0]
 
 (**)
 
-SOR  [0,9] (**) (**)  FB  [1,0] (*=*) (*5*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*Speed_control*) (**)  , (*i2:*)(*Speed_medium*) (**) ; (*o1:*)(**) (**) )  FB  [4,0] (***) (*7*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*Cycle*) (**)  , (*i2:*)(*0.5*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*DutyCycle*) (**) )
+SOR  [0,9] (**) (**)  FB  [1,0] (*=*) (*5*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*Speed_control*) (**)  , (*i2:*)(*Speed_medium*) (**) ; (*o1:*)(**) (**) )  FB  [4,0] (***) (*7*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*Cycle*) (**)  , (*i2:*)(*0.2*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*DutyCycle*) (**) )
 EOR [7,0]
 
 
 (**)
 
-SOR  [0,13] (**) (**)  FB  [1,0] (*=*) (*5*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*Speed_control*) (**)  , (*i2:*)(*Speed_high*) (**) ; (*o1:*)(**) (**) )  FB  [4,0] (***) (*7*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*Cycle*) (**)  , (*i2:*)(*1*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*DutyCycle*) (**) )
+SOR  [0,13] (**) (**)  FB  [1,0] (*=*) (*5*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*Speed_control*) (**)  , (*i2:*)(*Speed_high*) (**) ; (*o1:*)(**) (**) )  FB  [4,0] (***) (*7*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*Cycle*) (**)  , (*i2:*)(*1.0*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*DutyCycle*) (**) )
 EOR [7,0]
 
 
@@ -41,17 +41,17 @@ EOR [4,0]
 
 (**)
 
-SOR  [0,20] (**) (**)  FB  [1,0] (*-*) (*4*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*Cycle*) (**)  , (*i2:*)(*DutyCycle*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*OffDelay*) (**) )
-EOR [4,0]
+SOR  [0,20] (**) (**)  FB  [1,0] (*-*) (*4*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*Cycle*) (**)  , (*i2:*)(*DutyCycle*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*OffDelay*) (**) )  FB  [4,0] (*ANY_TO_TIME*) (*9*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*OffDelay*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*OffDelay_ms*) (**) )
+EOR [7,0]
 
 
 (**)
 
-SOR  [0,24] (**) (**)  XIC  [1,0] (*_IO_EM_DO_00*) (*Motor*)  FB  [2,0] (*TONOFF*) (*TONOFF_1*) ( (*IN:*)(**) (**)  , (*PT:*)(*duty_cycle_ms*) (**)  , (*PTOF:*)(*OffDelay*) (**) ; (*Q:*)(**) (**)  , (*ET:*)(**) (**) )  OTE  [5,0] (*motor_interupt*) (**)
+SOR  [0,24] (**) (**)  XIC  [1,0] (*_IO_EM_DO_00*) (*Motor*)  FB  [2,0] (*TONOFF*) (*TONOFF_1*) ( (*IN:*)(**) (**)  , (*PT:*)(*duty_cycle_ms*) (**)  , (*PTOF:*)(*OffDelay_ms*) (**) ; (*Q:*)(**) (**)  , (*ET:*)(**) (**) )  OTE  [5,0] (*motor_interupt*) (**)
 EOR [6,0]
 EOF
 #end_info
 #info= ID_MAX
-NextId=8
+NextId=9
 #end_info
 END_PROGRAM

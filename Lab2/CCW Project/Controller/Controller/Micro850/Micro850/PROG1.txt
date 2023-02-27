@@ -42,9 +42,9 @@ END_IF ;
 __MO_EQUAL_1 := __EDTB1 ;
 __EDTB3 := __EDTB1 ;
 IF __EDTB3 THEN
-DUTYCYCLE := (  LOW_SPEED) ;
+DUTYCYCLE := (CYCLE * 0.1) ;
 END_IF ;
-__MO_1GAIN_1 := __EDTB3 ;
+__MO_MULT_1 := __EDTB3 ;
 
 (*************** Code for the end of Rung **************)
 __GL __LG0003 ;
@@ -66,9 +66,9 @@ END_IF ;
 __MO_EQUAL_2 := __EDTB4 ;
 __EDTB6 := __EDTB4 ;
 IF __EDTB6 THEN
-DUTYCYCLE := (  MEDIUM_SPEED) ;
+DUTYCYCLE := (CYCLE * 0.2) ;
 END_IF ;
-__MO_1GAIN_2 := __EDTB6 ;
+__MO_MULT_2 := __EDTB6 ;
 
 (*************** Code for the end of Rung **************)
 __GL __LG0004 ;
@@ -90,9 +90,9 @@ END_IF ;
 __MO_EQUAL_3 := __EDTB7 ;
 __EDTB9 := __EDTB7 ;
 IF __EDTB9 THEN
-DUTYCYCLE := (  HIGH_SPEED) ;
+DUTYCYCLE := (CYCLE * 1.0) ;
 END_IF ;
-__MO_1GAIN_3 := __EDTB9 ;
+__MO_MULT_3 := __EDTB9 ;
 
 (*************** Code for the end of Rung **************)
 __GL __LG0005 ;
@@ -106,9 +106,9 @@ __ENDSTEPPRAGMA
 (*Label :*)(**)
 __EDTB10 := TRUE ;
 IF __EDTB10 THEN
-OFFDELAY := (CYCLE - DUTYCYCLE) ;
+DUTY_CYCLE_MS := ANY_TO_TIME(DUTYCYCLE) ;
 END_IF ;
-__MO_MINUS_1 := __EDTB10 ;
+__MO_ANY_TO_TIME_1 := __EDTB10 ;
 
 (*************** Code for the end of Rung **************)
 __GL __LG0006 ;
@@ -117,15 +117,36 @@ __GL __LG0006 ;
 (*************** Rung **********************************)
 (**)
 __STEPPRAGMA
-0,21
+0,20
 __ENDSTEPPRAGMA
 (*Label :*)(**)
-(* FB call: TONOFF *)
-TONOFF_1(_IO_EM_DO_00, DUTYCYCLE, OFFDELAY) ;
-MOTOR_INTERUPT := TONOFF_1.Q ;
+__EDTB11 := TRUE ;
+IF __EDTB11 THEN
+OFFDELAY := (CYCLE - DUTYCYCLE) ;
+END_IF ;
+__MO_MINUS_1 := __EDTB11 ;
+__EDTB12 := __EDTB11 ;
+IF __EDTB12 THEN
+OFFDELAY_MS := ANY_TO_TIME(OFFDELAY) ;
+END_IF ;
+__MO_ANY_TO_TIME_2 := __EDTB12 ;
 
 (*************** Code for the end of Rung **************)
 __GL __LG0007 ;
+
+
+(*************** Rung **********************************)
+(**)
+__STEPPRAGMA
+0,24
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+(* FB call: TONOFF *)
+TONOFF_1(_IO_EM_DO_00, DUTY_CYCLE_MS, OFFDELAY_MS) ;
+MOTOR_INTERUPT := TONOFF_1.Q ;
+
+(*************** Code for the end of Rung **************)
+__GL __LG0008 ;
 
 
 (*************** Code for the end of File **************)
@@ -144,4 +165,6 @@ __GL __LG0000 ;
 (* __EDTB8 *)
 (* __EDTB9 *)
 (* __EDTB10 *)
+(* __EDTB11 *)
+(* __EDTB12 *)
 
