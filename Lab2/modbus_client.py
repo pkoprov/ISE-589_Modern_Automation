@@ -9,12 +9,12 @@ def main():
     if client.is_socket_open():
         print("Connected to PLC\n")
         while True:
-            print("1. Start motor\n"
+            print("\n0. Quit\n"
+                  "1. Start motor\n"
                   "2. Stop motor\n"
                   "3. Set forward direction\n"
                   "4. Set reverse direction\n"
-                  "5. Set speed\n"
-                  "6. Quit\n")
+                  "5. Set speed\n")
             CMD = input("Select command to send to PLC: ")
             match CMD:
                 case '1':
@@ -37,10 +37,14 @@ def main():
                             response = client.write_register(0, 1)
                         case '3':
                             response = client.write_register(0, 2)
-                case '6':
+                case '0':
+                    client.close()
                     print("Quiting...")
                     break
-            print(response)
+                case _:
+                    print("Invalid command\n")
+
+            print("\n", response)
     else:
         print("Connection to PLC failed")
 
