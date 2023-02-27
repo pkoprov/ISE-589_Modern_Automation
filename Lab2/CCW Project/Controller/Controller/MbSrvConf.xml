@@ -1,14 +1,17 @@
 <modbusServer Version="2.0">
   <modbusRegister name="COILS">
-    <mapping variable="Motor_Start" parent="Micro850" dataType="Bool" address="000001">
+    <mapping variable="MW" parent="Micro850" dataType="Bool" address="000001" va="0x449">
       <MBVarInfo ElemType="Bool" SubElemType="Any" DataTypeSize="1" />
     </mapping>
-    <mapping variable="Motor_direction" parent="Micro850" dataType="Bool" address="000002">
+    <mapping variable="MF" parent="Micro850" dataType="Bool" address="000002">
+      <MBVarInfo ElemType="Bool" SubElemType="Any" DataTypeSize="1" />
+    </mapping>
+    <mapping variable="MR" parent="Micro850" dataType="Bool" address="000003">
       <MBVarInfo ElemType="Bool" SubElemType="Any" DataTypeSize="1" />
     </mapping>
   </modbusRegister>
   <modbusRegister name="HOLDING_REGISTERS">
-    <mapping variable="Speed_control" parent="Micro850" dataType="Int" address="400001" va="0x44e">
+    <mapping variable="Speed_control" parent="Micro850" dataType="Int" address="400001" va="0x450">
       <MBVarInfo ElemType="Int" SubElemType="Any" DataTypeSize="2" />
     </mapping>
   </modbusRegister>

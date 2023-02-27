@@ -8,7 +8,9 @@ __STEPPRAGMA
 0,1
 __ENDSTEPPRAGMA
 (*Label :*)(**)
-_IO_EM_DO_00 := MOTOR_START AND NOT(MOTOR_INTERUPT) ;
+__EDTB1 := MF ;
+__EDTB2 := _IO_EM_DO_00 ;
+_IO_EM_DO_00 := (__EDTB1 OR __EDTB2) AND MW AND NOT(_IO_EM_DO_01) AND NOT(MR) AND NOT(MOTOR_INTERUPT) ;
 
 (*************** Code for the end of Rung **************)
 __GL __LG0001 ;
@@ -17,10 +19,12 @@ __GL __LG0001 ;
 (*************** Rung **********************************)
 (**)
 __STEPPRAGMA
-0,3
+0,4
 __ENDSTEPPRAGMA
 (*Label :*)(**)
-_IO_EM_DO_01 := MOTOR_DIRECTION ;
+__EDTB3 := MR ;
+__EDTB4 := _IO_EM_DO_01 ;
+_IO_EM_DO_01 := (__EDTB3 OR __EDTB4) AND MW AND NOT(_IO_EM_DO_00) AND NOT(MF) AND NOT(MOTOR_INTERUPT) ;
 
 (*************** Code for the end of Rung **************)
 __GL __LG0002 ;
@@ -29,22 +33,22 @@ __GL __LG0002 ;
 (*************** Rung **********************************)
 (**)
 __STEPPRAGMA
-0,5
+0,7
 __ENDSTEPPRAGMA
 (*Label :*)(**)
-__EDTB2 := TRUE ;
-IF __EDTB2 THEN
-(* Operator output on : = with __EDTB1 *)
-__EDTB1 := (SPEED_CONTROL = SPEED_LOW) ;
+__EDTB6 := TRUE ;
+IF __EDTB6 THEN
+(* Operator output on : = with __EDTB5 *)
+__EDTB5 := (SPEED_CONTROL = SPEED_LOW) ;
 ELSE
-__EDTB1 := FALSE ;
+__EDTB5 := FALSE ;
 END_IF ;
-__MO_EQUAL_1 := __EDTB1 ;
-__EDTB3 := __EDTB1 ;
-IF __EDTB3 THEN
-DUTYCYCLE := (CYCLE * 0.1) ;
+__MO_EQUAL_1 := __EDTB5 ;
+__EDTB7 := __EDTB5 ;
+IF __EDTB7 THEN
+DUTYCYCLE := (CYCLE * 0.25) ;
 END_IF ;
-__MO_MULT_1 := __EDTB3 ;
+__MO_MULT_1 := __EDTB7 ;
 
 (*************** Code for the end of Rung **************)
 __GL __LG0003 ;
@@ -53,22 +57,22 @@ __GL __LG0003 ;
 (*************** Rung **********************************)
 (**)
 __STEPPRAGMA
-0,9
+0,11
 __ENDSTEPPRAGMA
 (*Label :*)(**)
-__EDTB5 := TRUE ;
-IF __EDTB5 THEN
-(* Operator output on : = with __EDTB4 *)
-__EDTB4 := (SPEED_CONTROL = SPEED_MEDIUM) ;
+__EDTB9 := TRUE ;
+IF __EDTB9 THEN
+(* Operator output on : = with __EDTB8 *)
+__EDTB8 := (SPEED_CONTROL = SPEED_MEDIUM) ;
 ELSE
-__EDTB4 := FALSE ;
+__EDTB8 := FALSE ;
 END_IF ;
-__MO_EQUAL_2 := __EDTB4 ;
-__EDTB6 := __EDTB4 ;
-IF __EDTB6 THEN
-DUTYCYCLE := (CYCLE * 0.2) ;
+__MO_EQUAL_2 := __EDTB8 ;
+__EDTB10 := __EDTB8 ;
+IF __EDTB10 THEN
+DUTYCYCLE := (CYCLE * 0.5) ;
 END_IF ;
-__MO_MULT_2 := __EDTB6 ;
+__MO_MULT_2 := __EDTB10 ;
 
 (*************** Code for the end of Rung **************)
 __GL __LG0004 ;
@@ -77,22 +81,22 @@ __GL __LG0004 ;
 (*************** Rung **********************************)
 (**)
 __STEPPRAGMA
-0,13
+0,15
 __ENDSTEPPRAGMA
 (*Label :*)(**)
-__EDTB8 := TRUE ;
-IF __EDTB8 THEN
-(* Operator output on : = with __EDTB7 *)
-__EDTB7 := (SPEED_CONTROL = SPEED_HIGH) ;
+__EDTB12 := TRUE ;
+IF __EDTB12 THEN
+(* Operator output on : = with __EDTB11 *)
+__EDTB11 := (SPEED_CONTROL = SPEED_HIGH) ;
 ELSE
-__EDTB7 := FALSE ;
+__EDTB11 := FALSE ;
 END_IF ;
-__MO_EQUAL_3 := __EDTB7 ;
-__EDTB9 := __EDTB7 ;
-IF __EDTB9 THEN
+__MO_EQUAL_3 := __EDTB11 ;
+__EDTB13 := __EDTB11 ;
+IF __EDTB13 THEN
 DUTYCYCLE := (CYCLE * 1.0) ;
 END_IF ;
-__MO_MULT_3 := __EDTB9 ;
+__MO_MULT_3 := __EDTB13 ;
 
 (*************** Code for the end of Rung **************)
 __GL __LG0005 ;
@@ -101,14 +105,14 @@ __GL __LG0005 ;
 (*************** Rung **********************************)
 (**)
 __STEPPRAGMA
-0,17
+0,19
 __ENDSTEPPRAGMA
 (*Label :*)(**)
-__EDTB10 := TRUE ;
-IF __EDTB10 THEN
+__EDTB14 := TRUE ;
+IF __EDTB14 THEN
 DUTY_CYCLE_MS := ANY_TO_TIME(DUTYCYCLE) ;
 END_IF ;
-__MO_ANY_TO_TIME_1 := __EDTB10 ;
+__MO_ANY_TO_TIME_1 := __EDTB14 ;
 
 (*************** Code for the end of Rung **************)
 __GL __LG0006 ;
@@ -117,19 +121,19 @@ __GL __LG0006 ;
 (*************** Rung **********************************)
 (**)
 __STEPPRAGMA
-0,20
+0,22
 __ENDSTEPPRAGMA
 (*Label :*)(**)
-__EDTB11 := TRUE ;
-IF __EDTB11 THEN
+__EDTB15 := TRUE ;
+IF __EDTB15 THEN
 OFFDELAY := (CYCLE - DUTYCYCLE) ;
 END_IF ;
-__MO_MINUS_1 := __EDTB11 ;
-__EDTB12 := __EDTB11 ;
-IF __EDTB12 THEN
+__MO_MINUS_1 := __EDTB15 ;
+__EDTB16 := __EDTB15 ;
+IF __EDTB16 THEN
 OFFDELAY_MS := ANY_TO_TIME(OFFDELAY) ;
 END_IF ;
-__MO_ANY_TO_TIME_2 := __EDTB12 ;
+__MO_ANY_TO_TIME_2 := __EDTB16 ;
 
 (*************** Code for the end of Rung **************)
 __GL __LG0007 ;
@@ -138,11 +142,14 @@ __GL __LG0007 ;
 (*************** Rung **********************************)
 (**)
 __STEPPRAGMA
-0,24
+0,26
 __ENDSTEPPRAGMA
 (*Label :*)(**)
+(* Operator output on : XOR with __EDTB17 *)
+__EDTB17 := (_IO_EM_DO_00 XOR _IO_EM_DO_01) ;
+__MO_XOR_1 := __EDTB17 ;
 (* FB call: TONOFF *)
-TONOFF_1(_IO_EM_DO_00, DUTY_CYCLE_MS, OFFDELAY_MS) ;
+TONOFF_1(__EDTB17 AND MW, DUTY_CYCLE_MS, OFFDELAY_MS) ;
 MOTOR_INTERUPT := TONOFF_1.Q ;
 
 (*************** Code for the end of Rung **************)
@@ -167,4 +174,9 @@ __GL __LG0000 ;
 (* __EDTB10 *)
 (* __EDTB11 *)
 (* __EDTB12 *)
+(* __EDTB13 *)
+(* __EDTB14 *)
+(* __EDTB15 *)
+(* __EDTB16 *)
+(* __EDTB17 *)
 

@@ -22,9 +22,9 @@ def main():
                 case '2':
                     response = client.write_coil(0, False)
                 case '3':
-                    response = client.write_coil(1, True)
+                    response = client.write_coils(1, [True, False])
                 case '4':
-                    response = client.write_coil(1, False)
+                    response = client.write_coils(1, [False, True])
                 case '5':
                     print("1. Low speed\n"
                           "2. Medium speed\n"

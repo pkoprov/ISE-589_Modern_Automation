@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="3c5b212c-25e8-475c-a700-56a9c1372c21" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../Lab2/CCW Project/Controller/Controller/LogicalValues.csv" beforeDir="false" afterPath="$PROJECT_DIR$/../Lab2/CCW Project/Controller/Controller/LogicalValues.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab2/CCW Project/Controller/Controller/MbSrvConf.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Lab2/CCW Project/Controller/Controller/MbSrvConf.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab2/CCW Project/Controller/Controller/MbSrvConf_target.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Lab2/CCW Project/Controller/Controller/MbSrvConf_target.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab2/CCW Project/Controller/Controller/Micro850/Micro850/FBS_INPUTS_ASSIGNATION.ipa" beforeDir="false" afterPath="$PROJECT_DIR$/../Lab2/CCW Project/Controller/Controller/Micro850/Micro850/FBS_INPUTS_ASSIGNATION.ipa" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab2/CCW Project/Controller/Controller/Micro850/Micro850/GlobalVariable.rtc" beforeDir="false" afterPath="$PROJECT_DIR$/../Lab2/CCW Project/Controller/Controller/Micro850/Micro850/GlobalVariable.rtc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab2/CCW Project/Controller/Controller/Micro850/Micro850/Header.rtc" beforeDir="false" afterPath="$PROJECT_DIR$/../Lab2/CCW Project/Controller/Controller/Micro850/Micro850/Header.rtc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab2/CCW Project/Controller/Controller/Micro850/Micro850/IDS00103" beforeDir="false" afterPath="$PROJECT_DIR$/../Lab2/CCW Project/Controller/Controller/Micro850/Micro850/IDS00103" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab2/CCW Project/Controller/Controller/Micro850/Micro850/MICRO850_Conf.xtc" beforeDir="false" afterPath="$PROJECT_DIR$/../Lab2/CCW Project/Controller/Controller/Micro850/Micro850/MICRO850_Conf.xtc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab2/CCW Project/Controller/Controller/Micro850/Micro850/MICRO850_Constants.xtc" beforeDir="false" afterPath="$PROJECT_DIR$/../Lab2/CCW Project/Controller/Controller/Micro850/Micro850/MICRO850_Constants.xtc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab2/CCW Project/Controller/Controller/Micro850/Micro850/MICRO850_DwlOrder.xtc" beforeDir="false" afterPath="$PROJECT_DIR$/../Lab2/CCW Project/Controller/Controller/Micro850/Micro850/MICRO850_DwlOrder.xtc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab2/CCW Project/Controller/Controller/Micro850/Micro850/MICRO850_LinkInfo.mtc" beforeDir="false" afterPath="$PROJECT_DIR$/../Lab2/CCW Project/Controller/Controller/Micro850/Micro850/MICRO850_LinkInfo.mtc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab2/CCW Project/Controller/Controller/Micro850/Micro850/MICRO850_LinkInfo.s.mtc" beforeDir="false" afterPath="$PROJECT_DIR$/../Lab2/CCW Project/Controller/Controller/Micro850/Micro850/MICRO850_LinkInfo.s.mtc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab2/CCW Project/Controller/Controller/Micro850/Micro850/MICRO850_MdfLinkReport.s.mtc" beforeDir="false" afterPath="$PROJECT_DIR$/../Lab2/CCW Project/Controller/Controller/Micro850/Micro850/MICRO850_MdfLinkReport.s.mtc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab2/CCW Project/Controller/Controller/Micro850/Micro850/MICRO850_MiscLinkInfo.mtc" beforeDir="false" afterPath="$PROJECT_DIR$/../Lab2/CCW Project/Controller/Controller/Micro850/Micro850/MICRO850_MiscLinkInfo.mtc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab2/CCW Project/Controller/Controller/Micro850/Micro850/MICRO850_MiscLinkInfo.s.mtc" beforeDir="false" afterPath="$PROJECT_DIR$/../Lab2/CCW Project/Controller/Controller/Micro850/Micro850/MICRO850_MiscLinkInfo.s.mtc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab2/CCW Project/Controller/Controller/Micro850/Micro850/MICRO850_Pou_PROG1.ipa" beforeDir="false" afterPath="$PROJECT_DIR$/../Lab2/CCW Project/Controller/Controller/Micro850/Micro850/MICRO850_Pou_PROG1.ipa" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab2/CCW Project/Controller/Controller/Micro850/Micro850/MICRO850_Pou_PROG1.xtc" beforeDir="false" afterPath="$PROJECT_DIR$/../Lab2/CCW Project/Controller/Controller/Micro850/Micro850/MICRO850_Pou_PROG1.xtc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab2/CCW Project/Controller/Controller/Micro850/Micro850/MICRO850_SymbolsComplement.ttc" beforeDir="false" afterPath="$PROJECT_DIR$/../Lab2/CCW Project/Controller/Controller/Micro850/Micro850/MICRO850_SymbolsComplement.ttc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab2/CCW Project/Controller/Controller/Micro850/Micro850/MICRO850_SymbolsDebug.d.xtc" beforeDir="false" afterPath="$PROJECT_DIR$/../Lab2/CCW Project/Controller/Controller/Micro850/Micro850/MICRO850_SymbolsDebug.d.xtc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab2/CCW Project/Controller/Controller/Micro850/Micro850/MICRO850_SymbolsDebug.s.xtc" beforeDir="false" afterPath="$PROJECT_DIR$/../Lab2/CCW Project/Controller/Controller/Micro850/Micro850/MICRO850_SymbolsDebug.s.xtc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab2/CCW Project/Controller/Controller/Micro850/Micro850/MICRO850_SymbolsDebug.xtc" beforeDir="false" afterPath="$PROJECT_DIR$/../Lab2/CCW Project/Controller/Controller/Micro850/Micro850/MICRO850_SymbolsDebug.xtc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab2/CCW Project/Controller/Controller/Micro850/Micro850/MICRO850_SymbolsTarget.s.xtc" beforeDir="false" afterPath="$PROJECT_DIR$/../Lab2/CCW Project/Controller/Controller/Micro850/Micro850/MICRO850_SymbolsTarget.s.xtc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab2/CCW Project/Controller/Controller/Micro850/Micro850/MICRO850_SymbolsTarget.xtc" beforeDir="false" afterPath="$PROJECT_DIR$/../Lab2/CCW Project/Controller/Controller/Micro850/Micro850/MICRO850_SymbolsTarget.xtc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab2/CCW Project/Controller/Controller/Micro850/Micro850/PROG1.fmo" beforeDir="false" afterPath="$PROJECT_DIR$/../Lab2/CCW Project/Controller/Controller/Micro850/Micro850/PROG1.fmo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab2/CCW Project/Controller/Controller/Micro850/Micro850/PROG1.ic" beforeDir="false" afterPath="$PROJECT_DIR$/../Lab2/CCW Project/Controller/Controller/Micro850/Micro850/PROG1.ic" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab2/CCW Project/Controller/Controller/Micro850/Micro850/PROG1.otc" beforeDir="false" afterPath="$PROJECT_DIR$/../Lab2/CCW Project/Controller/Controller/Micro850/Micro850/PROG1.otc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab2/CCW Project/Controller/Controller/Micro850/Micro850/PROG1.rtc" beforeDir="false" afterPath="$PROJECT_DIR$/../Lab2/CCW Project/Controller/Controller/Micro850/Micro850/PROG1.rtc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab2/CCW Project/Controller/Controller/Micro850/Micro850/PROG1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../Lab2/CCW Project/Controller/Controller/Micro850/Micro850/PROG1.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab2/CCW Project/Controller/Controller/Micro850/Micro850/Prog1.AcfMlge" beforeDir="false" afterPath="$PROJECT_DIR$/../Lab2/CCW Project/Controller/Controller/Micro850/Micro850/Prog1.AcfMlge" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab2/CCW Project/Controller/Controller/Micro850/Micro850/Prog1.stf" beforeDir="false" afterPath="$PROJECT_DIR$/../Lab2/CCW Project/Controller/Controller/Micro850/Micro850/Prog1.stf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab2/CCW Project/Controller/Controller/PrjLibrary.accdb" beforeDir="false" afterPath="$PROJECT_DIR$/../Lab2/CCW Project/Controller/Controller/PrjLibrary.accdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab2/CCW Project/Controller/Controller/RMD.info" beforeDir="false" afterPath="$PROJECT_DIR$/../Lab2/CCW Project/Controller/Controller/RMD.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab2/CCW Project/Controller/Controller/persist.ccwx" beforeDir="false" afterPath="$PROJECT_DIR$/../Lab2/CCW Project/Controller/Controller/persist.ccwx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab2/CCW Project/Controller/Controller_Backup.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab2/CCW Project/main.v12.ccwsuo" beforeDir="false" afterPath="$PROJECT_DIR$/../Lab2/CCW Project/main.v12.ccwsuo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab2/modbus_client.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Lab2/modbus_client.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$/.." value="main" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2MA9pPLXKkZ8NfxWTldEud74WCX" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/OneDrive - personal/OneDrive - North Carolina State University/ISE 589 Introduction to Modern Industrial Automation/Project2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;settings.sync&quot;
+  }
+}</component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="3c5b212c-25e8-475c-a700-56a9c1372c21" name="Changes" comment="" />
+      <created>1677199701956</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1677199701956</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/../Lab2/modbus_client.py</url>
+          <line>18</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
