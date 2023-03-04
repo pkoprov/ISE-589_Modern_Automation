@@ -7,7 +7,7 @@ close all;
 
 Ke = 0.2; % Torque Constant Nm/A
 Kb = 0.5; % Back-EMF Constant Vs/rad
-R = 10;    % Terminal Resistance
+R = 5;    % Terminal Resistance
 
 counter1 = 1;
 for spd = 0:1:50
@@ -30,8 +30,8 @@ plot(spd,T(:,2),'b','linewidth',1.5);
 plot(spd,T(:,3),'r','linewidth',1.5);
 xlabel('rotation speed \omega');
 ylabel('Torque (T)');
-xlim([0 22]);
-ylim([0 0.4]);
+% xlim([0 22]);
+% ylim([0 0.4]);
 
 
 counter1 = 1;
