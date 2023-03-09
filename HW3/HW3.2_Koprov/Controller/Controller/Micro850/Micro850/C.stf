@@ -1,0 +1,16 @@
+PROGRAM C
+#info= QLD
+BOF
+
+
+(**)
+
+SOR  [0,1] (**) (**)  
+ BST  XIO  [1,0] (*_IO_EM_DI_00*) (*A*)
+   NXB  XIO  [1,1] (*_IO_EM_DI_01*) (*B*)
+ BND
+  XIC  [2,0] (*_IO_EM_DI_02*) (*C*)  OTE  [3,0] (*_IO_EM_DO_00*) (*D*)
+EOR [4,0]
+EOF
+#end_info
+END_PROGRAM

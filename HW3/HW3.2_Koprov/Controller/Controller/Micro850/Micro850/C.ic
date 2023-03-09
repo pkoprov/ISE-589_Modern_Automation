@@ -1,0 +1,10 @@
+_STEP 2 0 1
+__TMPB1 := _NOT _IO_EM_DI_00 
+__EDTB1 := __TMPB1 
+__TMPB1 := _NOT _IO_EM_DI_01 
+__EDTB2 := __TMPB1 
+__TMPB1 := __EDTB1 _OR __EDTB2 
+__TMPB1 := __TMPB1 _AND _IO_EM_DI_02 
+_IO_EM_DO_00 := __TMPB1 
+__LG0001 : 
+__LG0000 : 
