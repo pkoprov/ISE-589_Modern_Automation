@@ -1,0 +1,15 @@
+_STEP 2 0 14
+__TMPB1 := _NOT _IO_EM_DI_00 
+__MO_14 := __TMPB1 
+_STEP 2 0 13
+__TMPB1 := _NOT _IO_EM_DI_01 
+__MO_13 := __TMPB1 
+_STEP 2 0 11
+__TMPB1 := __MO_14 _OR __MO_13 
+__MO_11 := __TMPB1 
+_STEP 2 0 12
+__TMPB1 := __MO_11 _AND _IO_EM_DI_02 
+__MO_12 := __TMPB1 
+_STEP 2 0 4
+_IO_EM_DO_00 := __MO_12 
+__LG0000 : 
