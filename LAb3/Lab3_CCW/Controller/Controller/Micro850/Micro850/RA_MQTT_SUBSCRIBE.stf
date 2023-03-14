@@ -1,0 +1,146 @@
+FUNCTION_BLOCK RA_MQTT_SUBSCRIBE
+(* =========================================================================================================================
+	[UDFB Name]					:RA_MQTT_PUBLISH
+	[Category]					:Communication
+	[Description]				:Subscribe to MQTT Broker/Server
+	[Author]					:Rockwell Automation
+	[Created using CCW Version]	:12.0
+	[Feedback]					:RASampleCode@ra.rockwell.com
+	[Revision History]			:2020-Feb - Release
+	[Notes]						:
+============================================================================================================================ *)
+IF FBEN THEN
+	FBENO := TRUE;
+	rawSubscribeData[1] := 130;
+	rawSubscribeData[2] := ANY_TO_USINT(m+5);
+
+	rawSubscribeData[3] := any_to_usint(SHR(AND_MASK(msgIdentifier,65280),8)); (*Client ID Length: MSB*)
+	rawSubscribeData[4] := any_to_usint(AND_MASK(msgIdentifier,255)) ; (*Client ID Length: LSB*)
+	rawSubscribeData[5] := any_to_usint(SHR(AND_MASK(m,65280),8)); (*Client ID Length: MSB*)
+	rawSubscribeData[6] := any_to_usint(AND_MASK(m,255)) ; (*Client ID Length: LSB*)
+
+	m := MLEN(topicName);
+	FOR n:= 1 TO m BY 1 DO
+	rawSubscribeData[6+n] := ANY_TO_USINT(ASCII(topicName,n));
+	END_FOR;
+
+	rawSubscribeData[6+m+1] := qos; (*Requested QOS: Fire and Forget*)
+
+	(*------------------------------Subscribe data------------------------------*)
+	subscribeRTrig(subscribe);
+	COP_1(subscribe_IP, rawSubscribeData,0, subscribeData, 0, ANY_TO_UINT(6+m+1), FALSE);
+	SOCKET_WRITE_1(subscribe_IP AND COP_1.Sts=1, instance, 0, noSocAddr, subscribeData, ANY_TO_UINT(6+m+1), 0);
+
+	IF subscribeRTrig.Q THEN
+		subscribe_IP := TRUE;
+		msgDone := FALSE;
+		msgError := FALSE;
+	END_IF;
+
+	subscribeError_rTrig(SOCKET_WRITE_1.Status.StatusBits.3);
+	IF subscribeError_rTrig.Q THEN
+		subscribe_IP := FALSE;
+		msgError := TRUE;
+	END_IF;
+
+	subscribeDone_rTrig(SOCKET_WRITE_1.Status.StatusBits.4);
+	IF subscribeDone_rTrig.Q THEN
+		subscribe_IP := FALSE;
+		msgDone := TRUE;
+	END_IF;
+
+	(*---------------------------------------------------------------------------*)
+	
+	COP_9(inboundData[1]=50 or inboundData[1]=51 or inboundData[1]=58 or inboundData[1]=52 OR inboundData[1]=53 OR inboundData[1]=60 OR inboundData[1]=61,inboundData, 0, pubData, 0, 256, FALSE);
+	
+	(*------------------------------Acknowledge incoming data for QOS1---------------------------------------------*)	
+	COP_3(COP_9.Sts=1 AND (inboundData[1]=50 or inboundData[1]=51 or inboundData[1]=58), pubData, 2, topicLen, 0, 1, FALSE);
+	COP_4(COP_3.Sts=1, pubData, topicLen[1]+4, inboundMsgIdentifier, 0, 1, FALSE);
+	
+	qos1PubAckData[1] := 64;
+	qos1PubAckData[2] := 2;
+	qos1PubAckData[3] := any_to_usint(SHR(AND_MASK(ANY_TO_DINT(inboundMsgIdentifier[1]),65280),8));
+	qos1PubAckData[4] := any_to_usint(AND_MASK(ANY_TO_DINT(inboundMsgIdentifier[1]),255));
+	
+	SOCKET_WRITE_3(COP_4.Sts=1, instance, 0, noSocAddr, qos1PubAckData, 4, 0); (*Ethernet socket check sum error. Correct length setting is 4*)
+	
+	(*------------------------------Acknowledge incoming data for QOS2---------------------------------------------*)
+
+	COP_5(COP_9.Sts=1 and (inboundData[1]=52 OR inboundData[1]=53 OR inboundData[1]=60 OR inboundData[1]=61), pubData, 2, topicLen2, 0, 1, FALSE);
+	COP_6(COP_5.Sts=1, pubData, topicLen2[1]+4, inboundMsgIdentifier2, 0, 1, FALSE);
+	
+	qos2PubAckData[1] := 80;
+	qos2PubAckData[2] := 2;
+	qos2PubAckData[3] := any_to_usint(SHR(AND_MASK(ANY_TO_DINT(inboundMsgIdentifier2[1]),65280),8));
+	qos2PubAckData[4] := any_to_usint(AND_MASK(ANY_TO_DINT(inboundMsgIdentifier2[1]),255));
+	
+	SOCKET_WRITE_4(COP_6.Sts=1, instance, 0, noSocAddr, qos2PubAckData, 4, 0); (*Ethernet socket check sum error. Correct length setting is 4*)	
+	
+	qos2PubAckData[1] := 112;
+	SOCKET_WRITE_5(inboundData[1]=98 AND SOCKET_WRITE_4.Done, instance, 0, noSocAddr, qos2PubAckData, 4, 0); (*Ethernet socket check sum error. Correct length setting is 4*)		
+	
+	(*------------------------------Unsubscribe data------------------------------*)
+	rawUnsubscribeData[1] := 162;
+	rawUnsubscribeData[2] := ANY_TO_USINT(m+4);
+
+	rawUnsubscribeData[3] := any_to_usint(SHR(AND_MASK(msgIdentifier,65280),8)); (*Client ID Length: MSB*)
+	rawUnsubscribeData[4] := any_to_usint(AND_MASK(msgIdentifier,255)) ; (*Client ID Length: LSB*)
+	rawUnsubscribeData[5] := any_to_usint(SHR(AND_MASK(m,65280),8)); (*Client ID Length: MSB*)
+	rawUnsubscribeData[6] := any_to_usint(AND_MASK(m,255)) ; (*Client ID Length: LSB*)
+
+	m := MLEN(topicName);
+	FOR n:= 1 TO m BY 1 DO
+	rawUnsubscribeData[6+n] := ANY_TO_USINT(ASCII(topicName,n));
+	END_FOR;
+
+	unsubscribeRTrig(unsubscribe);
+	COP_2(unsubscribe_IP, rawUnsubscribeData, 0, unsubscribeData, 0, ANY_TO_UINT(6+m), FALSE);
+	SOCKET_WRITE_2(unsubscribe_IP AND COP_2.Sts=1, instance, 0, noSocAddr, unsubscribeData, ANY_TO_UINT(6+m), 0);
+
+	IF unsubscribeRTrig.Q THEN
+		unsubscribe_IP := true;
+		msgDone := FALSE;
+		msgError := FALSE;
+	END_IF;
+
+	unsubscribeError_rTrig(SOCKET_WRITE_2.Status.StatusBits.3);
+	IF unsubscribeError_rTrig.Q THEN
+		unsubscribe_IP := FALSE;
+		msgError := TRUE;
+	END_IF;
+
+
+	unsubscribeDone_rTrig(SOCKET_WRITE_2.Status.StatusBits.4);
+	IF unsubscribeDone_rTrig.Q THEN
+		unsubscribe_IP := FALSE;
+		msgDone := TRUE;
+	END_IF;
+	
+(*-----------------------Error handling-----------------------------*)
+	socDelete(msgError, instance_In);
+	
+ELSE
+	FBENO := FALSE;
+	subscribe_IP 	:= FALSE;
+	unsubscribe_IP 	:= FALSE;
+	msgDone			:= FALSE;
+	msgError		:= FALSE;
+END_IF;
+	
+	(*---------------------------------------------------------------------------*)
+
+(*Map inputs to internal variables*)
+topicName := topicName_In;
+subscribe := subscribe_Cmd;
+instance := instance_In;
+msgIdentifier := subIdentifier_In;
+qos := QOS_In;
+unsubscribe := unsubscribe_Cmd;
+FOR x:= 1 to 256 BY 1 DO
+	inboundData[x] := respondData_In[x];
+END_FOR;
+
+(*Map internal variables to outputs*)
+Sts_Done := msgDone;
+Sts_Error := msgError;
+END_FUNCTION_BLOCK

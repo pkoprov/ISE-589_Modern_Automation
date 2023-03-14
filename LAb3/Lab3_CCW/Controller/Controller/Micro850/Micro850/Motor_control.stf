@@ -1,0 +1,28 @@
+PROGRAM Motor_control
+IF seq = 1 THEN
+    // if the sequence number is 1, set current topic to 'none' and current data to false
+    currentTopic := 'none';
+    currentData := FALSE;
+ELSE
+    // otherwise, set current topic to the topic name at the previous sequence number and current data to its boolean value
+    currentTopic := TopicNameArray[seq - 1];
+    currentData := ANY_TO_BOOL(TopicDataArray[seq - 1]);
+END_IF;
+
+// if the current topic is 'ISE589/BBK/Lab3/Motor_state', set the corresponding digital output based on the current data value
+IF currentTopic = 'ISE589/BBK/Lab3/Motor/State' THEN
+    IF currentData = TRUE and _IO_EM_DI_00 = FALSE  THEN 
+        _IO_EM_DO_00 := TRUE;
+    ELSE
+        _IO_EM_DO_00 := FALSE;
+    END_IF;
+// if the current topic is 'ISE589/BBK/Lab3/Motor_dir', set the corresponding digital output based on the current data value
+ELSIF currentTopic = 'ISE589/BBK/Lab3/Motor/Direction' THEN
+    IF currentData = TRUE THEN 
+        _IO_EM_DO_01 := TRUE;
+    ELSE
+        _IO_EM_DO_01 := FALSE;
+    END_IF;
+
+END_IF;
+END_PROGRAM

@@ -1,0 +1,196 @@
+FUNCTION_BLOCK RA_MQTT_PUBLISH
+(* =========================================================================================================================
+	[UDFB Name]					:RA_MQTT_PUBLISH
+	[Category]					:Communication
+	[Description]				:Publish to MQTT Broker/Server
+	[Author]					:Rockwell Automation
+	[Created using CCW Version]	:12.0
+	[Feedback]					:RASampleCode@ra.rockwell.com
+	[Revision History]			:2020-Feb - Release
+	[Notes]						:
+============================================================================================================================ *)
+IF FBEN THEN;
+	FBENO := TRUE;
+	
+	IF qos=2 THEN
+		qos_w := 52;
+	ELSIF qos = 1 THEN
+		qos_w := 50;
+	ELSE
+		qos_w := 48;
+	END_IF;
+	
+	IF retainMsg THEN
+		retainMsg_USINT := 1;
+	ELSE
+		retainMsg_USINT := 0;
+	END_IF;		
+
+CASE qos_w OF
+	48: (*Quality of Service = 0*)
+	
+		m := MLEN(topicName);
+		FOR n:= 1 TO m BY 1 DO
+		rawPublishData[4+n] := ANY_TO_USINT(ASCII(topicName,n));
+		END_FOR;
+
+		y := MLEN(data);
+		FOR x:= 1 TO y BY 1 DO
+		rawPublishData[4+m+x] := ANY_TO_USINT(ASCII(data,x));
+		END_FOR;
+		
+		rawPublishData[1] := qos_w + retainMsg_USINT;
+		rawPublishData[2] := ANY_TO_USINT(m+y+2);
+		rawPublishData[3] := any_to_usint(SHR(AND_MASK(m,65280),8)); (*Topic Length: MSB*)
+		rawPublishData[4] := any_to_usint(AND_MASK(m,255)) ; (*Topic Length: LSB*)		
+
+		publishRTrig(publish);
+		copqRTrig(COP_1.Sts=1);	
+
+		IF publishRTrig.Q THEN
+			msgDone := FALSE;
+		END_IF;
+
+		COP_1(publishRTrig.Q, rawPublishData,0, publishData, 0, ANY_TO_UINT(4+m+y), FALSE);
+		publishLen := ANY_TO_UINT(4+m+y);
+		SOCKET_WRITE_1(copqRTrig.q, instance, 0, noSocAddr, publishData, ANY_TO_UINT(4+m+y), 0);
+		
+		IF SOCKET_WRITE_1.Done THEN
+			msgDone := TRUE;
+			msgError := FALSE;
+		END_IF;
+		
+		IF SOCKET_WRITE_1.Error THEN
+			msgDone := FALSE;
+			msgError := TRUE;
+		END_IF;
+	
+	50:
+		m := MLEN(topicName);
+		FOR n:= 1 TO m BY 1 DO
+		rawPublishData[4+n] := ANY_TO_USINT(ASCII(topicName,n));
+		END_FOR;
+		
+		rawPublishData[5+m] := any_to_usint(SHR(AND_MASK(identifier,65280),8)); (*Identifier: MSB*)
+		rawPublishData[6+m] := any_to_usint(AND_MASK(identifier,255)) ; (*Topic Length: LSB*)
+			
+		y := MLEN(data);
+		FOR x:= 1 TO y BY 1 DO
+		rawPublishData[6+m+x] := ANY_TO_USINT(ASCII(data,x));
+		END_FOR;
+		
+		rawPublishData[1] := qos_w + retainMsg_USINT;
+		rawPublishData[2] := ANY_TO_USINT(m+y+4);
+		rawPublishData[3] := any_to_usint(SHR(AND_MASK(m,65280),8)); (*Topic Length: MSB*)
+		rawPublishData[4] := any_to_usint(AND_MASK(m,255)) ; (*Topic Length: LSB*)
+		
+		publishRTrig(publish);
+		copqRTrig(COP_1.Sts=1);	
+		
+		IF publishRTrig.Q THEN
+			msgDone := FALSE;
+			msgError:= FALSE;
+			identifier := identifier + 1;
+		END_IF;
+		
+		COP_1(publishRTrig.Q, rawPublishData,0, publishData, 0, ANY_TO_UINT(6+m+y), FALSE);
+		publishLen := ANY_TO_UINT(6+m+y);
+		SOCKET_WRITE_1(copqRTrig.q, instance, 0, noSocAddr, publishData, ANY_TO_UINT(6+m+y), 0);
+		
+		IF SOCKET_WRITE_1.Done THEN
+			msgDone := TRUE;
+			msgError := FALSE;
+		END_IF;
+		
+		IF SOCKET_WRITE_1.Error THEN
+			msgDone := FALSE;
+			msgError := TRUE;
+		END_IF;
+		
+	52:
+
+		m := MLEN(topicName);
+		FOR n:= 1 TO m BY 1 DO
+		rawPublishData[4+n] := ANY_TO_USINT(ASCII(topicName,n));
+		END_FOR;
+		
+		rawPublishData[5+m] := any_to_usint(SHR(AND_MASK(identifier,65280),8)); (*Identifier: MSB*)
+		rawPublishData[6+m] := any_to_usint(AND_MASK(identifier,255)) ; (*Topic Length: LSB*)
+			
+		y := MLEN(data);
+		FOR x:= 1 TO y BY 1 DO
+		rawPublishData[6+m+x] := ANY_TO_USINT(ASCII(data,x));
+		END_FOR;
+		
+		rawPublishData[1] := qos_w + retainMsg_USINT;
+		rawPublishData[2] := ANY_TO_USINT(m+y+4);
+		rawPublishData[3] := any_to_usint(SHR(AND_MASK(m,65280),8)); (*Topic Length: MSB*)
+		rawPublishData[4] := any_to_usint(AND_MASK(m,255)) ; (*Topic Length: LSB*)
+
+		publishRTrig(publish);
+		copqRTrig(COP_1.Sts=1);	
+		
+		IF publishRTrig.Q THEN
+		msgDone := FALSE;
+			identifier := identifier + 1;
+		END_IF;
+		
+		COP_1(publishRTrig.Q, rawPublishData,0, publishData, 0, ANY_TO_UINT(6+m+y), FALSE);
+		publishLen := ANY_TO_UINT(6+m+y);
+		SOCKET_WRITE_1(copqRTrig.q, instance, 0, noSocAddr, publishData, ANY_TO_UINT(6+m+y), 0);
+		
+		
+		
+		COP_2(inboundData[1]=80 AND SOCKET_WRITE_1.Done , inboundData, 0, pubInboundData, 0, 256, FALSE);
+		
+		cop2_rtrig(COP_2.Sts=1);
+		COP_3(cop2_rtrig.Q, pubInboundData, 2, inboundMsgIdentifier, 0, 1, FALSE);
+		
+		qos2PubAckData[1] := 98;
+		qos2PubAckData[2] := 2;
+		qos2PubAckData[3] := any_to_usint(SHR(AND_MASK(ANY_TO_DINT(inboundMsgIdentifier),65280),8));
+		qos2PubAckData[4] := any_to_usint(AND_MASK(ANY_TO_DINT(inboundMsgIdentifier),255));
+		
+		COP3_rTrig(COP_3.Sts=1);		
+		SOCKET_WRITE_2(COP3_rTrig.Q , instance, 0, noSocAddr, qos2PubAckData, 4, 0); (*Ethernet socket check sum error. Correct length setting is 4*)
+		
+		IF inboundData[1]=112 AND SOCKET_WRITE_2.Done THEN
+			msgDone := TRUE;
+			msgError := FALSE;
+		END_IF;
+		
+		IF SOCKET_WRITE_1.Error OR SOCKET_WRITE_2.Error THEN
+			msgDone := FALSE;
+			msgError := TRUE;
+		END_IF;
+		
+ELSE
+	
+END_CASE;		
+		
+	
+
+ELSE
+	FBENO := FALSE;
+	identifier := 1;
+	msgDone := FALSE;
+	msgError := FALSE;
+END_IF;
+
+(*Map inputs to internal variables*)
+topicName := topicName_In;
+data := data_In;
+publish := publish_Cmd;
+instance := instance_In;
+qos := QoS_In;
+retainMsg := retain_In;
+
+FOR h:= 1 TO 256 BY 1 DO
+	inboundData[h] := respondData_In[h];
+END_FOR;
+
+
+(*Map outputs to internal variables*)
+Sts_Done := msgDone;
+Sts_Error := msgError;
+END_FUNCTION_BLOCK

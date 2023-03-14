@@ -1,0 +1,267 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Pou FileVersion="200.00.006" Name="RA_MQTT_PUBLISH" ElementGuid="20874288-9c31-4bdf-85eb-045163f6727f" Comment="" SingleTextLine="" Language="ST" Localization="Prj" GenDebugInfo="false" UseResPassword="true" GenerateSymbMon="true" Is1499="false" CustomFbd="0" GroupName="(User defined)">
+  <FunctionBlock IdentifierNb="0" Keyword="" InitInstance="false" SymbMonExtraBytes="128" />
+  <LocalVars>
+    <Variable Name="FBEN" Comment="" Address="" Alias="" StringSize="0" DataType="BOOL" InitialValue="" Modifier="Constant" Kind="VarInput" AccessRights="Read" Direction="Input" CommentFields="" Attributes="0" />
+    <Variable Name="instance_In" Comment="" Address="" Alias="" StringSize="0" DataType="UDINT" InitialValue="" Modifier="Constant" Kind="VarInput" AccessRights="Read" Direction="Input" CommentFields="" Attributes="0" />
+    <Variable Name="topicName_In" Comment="" Address="" Alias="" StringSize="80" DataType="STRING" InitialValue="" Modifier="Constant" Kind="VarInput" AccessRights="Read" Direction="Input" CommentFields="" Attributes="0" />
+    <Variable Name="data_In" Comment="" Address="" Alias="" StringSize="80" DataType="STRING" InitialValue="" Modifier="Constant" Kind="VarInput" AccessRights="Read" Direction="Input" CommentFields="" Attributes="0" />
+    <Variable Name="QoS_In" Comment="" Address="" Alias="" StringSize="0" DataType="USINT" InitialValue="" Modifier="Constant" Kind="VarInput" AccessRights="Read" Direction="Input" CommentFields="" Attributes="0" />
+    <Variable Name="publish_Cmd" Comment="" Address="" Alias="" StringSize="0" DataType="BOOL" InitialValue="" Modifier="Constant" Kind="VarInput" AccessRights="Read" Direction="Input" CommentFields="" Attributes="0" />
+    <Variable Name="respondData_In" Comment="" Address="" Alias="" StringSize="0" DataType="USINT" InitialValue="" Modifier="Constant" Kind="VarInput" AccessRights="Read" Direction="Input" CommentFields="" Attributes="0">
+      <Dimension Lower="1" Upper="256" />
+    </Variable>
+    <Variable Name="FBENO" Comment="" Address="" Alias="" StringSize="0" DataType="BOOL" InitialValue="" Modifier="Constant" Kind="VarOutput" AccessRights="Write" Direction="Output" CommentFields="" Attributes="0" />
+    <Variable Name="Sts_Done" Comment="" Address="" Alias="" StringSize="0" DataType="BOOL" InitialValue="" Modifier="Constant" Kind="VarOutput" AccessRights="Write" Direction="Output" CommentFields="" Attributes="0" />
+    <Variable Name="Sts_Error" Comment="" Address="" Alias="" StringSize="0" DataType="BOOL" InitialValue="" Modifier="Constant" Kind="VarOutput" AccessRights="Write" Direction="Output" CommentFields="" Attributes="0" />
+    <Variable Name="SOCKET_WRITE_1" Comment="" Address="" Alias="" StringSize="0" DataType="SOCKET_WRITE" InitialValue=",2(),,,2(),FALSE,0" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0" />
+    <Variable Name="publish" Comment="" Address="" Alias="" StringSize="0" DataType="BOOL" InitialValue="" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0" />
+    <Variable Name="noSocAddr" Comment="" Address="" Alias="" StringSize="0" DataType="SOCKADDR_CFG" InitialValue="" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0" />
+    <Variable Name="publishData" Comment="" Address="" Alias="" StringSize="0" DataType="USINT" InitialValue="" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0">
+      <Dimension Lower="1" Upper="256" />
+    </Variable>
+    <Variable Name="publishLen" Comment="" Address="" Alias="" StringSize="0" DataType="UINT" InitialValue="" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0" />
+    <Variable Name="rawPublishData" Comment="" Address="" Alias="" StringSize="0" DataType="USINT" InitialValue="" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0">
+      <Dimension Lower="1" Upper="256" />
+    </Variable>
+    <Variable Name="data" Comment="" Address="" Alias="" StringSize="80" DataType="STRING" InitialValue="" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0" />
+    <Variable Name="topicName" Comment="" Address="" Alias="" StringSize="80" DataType="STRING" InitialValue="" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0" />
+    <Variable Name="x" Comment="" Address="" Alias="" StringSize="0" DataType="DINT" InitialValue="" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0" />
+    <Variable Name="y" Comment="" Address="" Alias="" StringSize="0" DataType="DINT" InitialValue="" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0" />
+    <Variable Name="m" Comment="" Address="" Alias="" StringSize="0" DataType="DINT" InitialValue="" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0" />
+    <Variable Name="n" Comment="" Address="" Alias="" StringSize="0" DataType="DINT" InitialValue="" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0" />
+    <Variable Name="instance" Comment="top" Address="" Alias="" StringSize="0" DataType="UDINT" InitialValue="" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0" />
+    <Variable Name="COP_1" Comment="" Address="" Alias="" StringSize="0" DataType="COP" InitialValue=",,,,2(),,2(0),2(0)" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0" />
+    <Variable Name="publishRTrig" Comment="" Address="" Alias="" StringSize="0" DataType="R_TRIG" InitialValue="" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0" />
+    <Variable Name="copqRTrig" Comment="" Address="" Alias="" StringSize="0" DataType="R_TRIG" InitialValue="" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0" />
+    <Variable Name="qos" Comment="" Address="" Alias="" StringSize="0" DataType="USINT" InitialValue="" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0" />
+    <Variable Name="qos_w" Comment="" Address="" Alias="" StringSize="0" DataType="USINT" InitialValue="" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0" />
+    <Variable Name="retainMsg" Comment="" Address="" Alias="" StringSize="0" DataType="BOOL" InitialValue="" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0" />
+    <Variable Name="retain_In" Comment="" Address="" Alias="" StringSize="0" DataType="BOOL" InitialValue="" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0" />
+    <Variable Name="retainMsg_USINT" Comment="" Address="" Alias="" StringSize="0" DataType="USINT" InitialValue="" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0" />
+    <Variable Name="identifier" Comment="" Address="" Alias="" StringSize="0" DataType="DINT" InitialValue="" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0" />
+    <Variable Name="h" Comment="" Address="" Alias="" StringSize="0" DataType="DINT" InitialValue="" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0" />
+    <Variable Name="COP_3" Comment="" Address="" Alias="" StringSize="0" DataType="COP" InitialValue=",,,,2(),,2(0),2(0)" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0" />
+    <Variable Name="COP_4" Comment="" Address="" Alias="" StringSize="0" DataType="COP" InitialValue=",,,,2(),,2(0),2(0)" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0" />
+    <Variable Name="topicLen" Comment="" Address="" Alias="" StringSize="0" DataType="UINT" InitialValue="" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0">
+      <Dimension Lower="1" Upper="1" />
+    </Variable>
+    <Variable Name="inboundMsgIdentifier" Comment="" Address="" Alias="" StringSize="0" DataType="UINT" InitialValue="" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0" />
+    <Variable Name="SOCKET_WRITE_2" Comment="" Address="" Alias="" StringSize="0" DataType="SOCKET_WRITE" InitialValue=",2(),,,2(),FALSE,0" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0" />
+    <Variable Name="qos2PubAckData" Comment="" Address="" Alias="" StringSize="0" DataType="USINT" InitialValue="" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0">
+      <Dimension Lower="1" Upper="256" />
+    </Variable>
+    <Variable Name="COP_5" Comment="" Address="" Alias="" StringSize="0" DataType="COP" InitialValue=",,,,2(),,2(0),2(0)" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0" />
+    <Variable Name="COP_6" Comment="" Address="" Alias="" StringSize="0" DataType="COP" InitialValue=",,,,2(),,2(0),2(0)" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0" />
+    <Variable Name="respondMsgIdentifier" Comment="" Address="" Alias="" StringSize="0" DataType="UINT" InitialValue="" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0" />
+    <Variable Name="msgDone" Comment="" Address="" Alias="" StringSize="0" DataType="BOOL" InitialValue="" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0" />
+    <Variable Name="msgError" Comment="" Address="" Alias="" StringSize="0" DataType="BOOL" InitialValue="" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0" />
+    <Variable Name="COP_2" Comment="" Address="" Alias="" StringSize="0" DataType="COP" InitialValue=",,,,2(),,2(0),2(0)" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0" />
+    <Variable Name="pubInboundData" Comment="" Address="" Alias="" StringSize="0" DataType="USINT" InitialValue="" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0">
+      <Dimension Lower="1" Upper="256" />
+    </Variable>
+    <Variable Name="cop2_rtrig" Comment="" Address="" Alias="" StringSize="0" DataType="R_TRIG" InitialValue="" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0" />
+    <Variable Name="COP3_rTrig" Comment="" Address="" Alias="" StringSize="0" DataType="R_TRIG" InitialValue="" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0" />
+  </LocalVars>
+  <PouBody><![CDATA[FUNCTION_BLOCK RA_MQTT_PUBLISH
+(* =========================================================================================================================
+	[UDFB Name]					:RA_MQTT_PUBLISH
+	[Category]					:Communication
+	[Description]				:Publish to MQTT Broker/Server
+	[Author]					:Rockwell Automation
+	[Created using CCW Version]	:12.0
+	[Feedback]					:RASampleCode@ra.rockwell.com
+	[Revision History]			:2020-Feb - Release
+	[Notes]						:
+============================================================================================================================ *)
+IF FBEN THEN;
+	FBENO := TRUE;
+	
+	IF qos=2 THEN
+		qos_w := 52;
+	ELSIF qos = 1 THEN
+		qos_w := 50;
+	ELSE
+		qos_w := 48;
+	END_IF;
+	
+	IF retainMsg THEN
+		retainMsg_USINT := 1;
+	ELSE
+		retainMsg_USINT := 0;
+	END_IF;		
+
+CASE qos_w OF
+	48: (*Quality of Service = 0*)
+	
+		m := MLEN(topicName);
+		FOR n:= 1 TO m BY 1 DO
+		rawPublishData[4+n] := ANY_TO_USINT(ASCII(topicName,n));
+		END_FOR;
+
+		y := MLEN(data);
+		FOR x:= 1 TO y BY 1 DO
+		rawPublishData[4+m+x] := ANY_TO_USINT(ASCII(data,x));
+		END_FOR;
+		
+		rawPublishData[1] := qos_w + retainMsg_USINT;
+		rawPublishData[2] := ANY_TO_USINT(m+y+2);
+		rawPublishData[3] := any_to_usint(SHR(AND_MASK(m,65280),8)); (*Topic Length: MSB*)
+		rawPublishData[4] := any_to_usint(AND_MASK(m,255)) ; (*Topic Length: LSB*)		
+
+		publishRTrig(publish);
+		copqRTrig(COP_1.Sts=1);	
+
+		IF publishRTrig.Q THEN
+			msgDone := FALSE;
+		END_IF;
+
+		COP_1(publishRTrig.Q, rawPublishData,0, publishData, 0, ANY_TO_UINT(4+m+y), FALSE);
+		publishLen := ANY_TO_UINT(4+m+y);
+		SOCKET_WRITE_1(copqRTrig.q, instance, 0, noSocAddr, publishData, ANY_TO_UINT(4+m+y), 0);
+		
+		IF SOCKET_WRITE_1.Done THEN
+			msgDone := TRUE;
+			msgError := FALSE;
+		END_IF;
+		
+		IF SOCKET_WRITE_1.Error THEN
+			msgDone := FALSE;
+			msgError := TRUE;
+		END_IF;
+	
+	50:
+		m := MLEN(topicName);
+		FOR n:= 1 TO m BY 1 DO
+		rawPublishData[4+n] := ANY_TO_USINT(ASCII(topicName,n));
+		END_FOR;
+		
+		rawPublishData[5+m] := any_to_usint(SHR(AND_MASK(identifier,65280),8)); (*Identifier: MSB*)
+		rawPublishData[6+m] := any_to_usint(AND_MASK(identifier,255)) ; (*Topic Length: LSB*)
+			
+		y := MLEN(data);
+		FOR x:= 1 TO y BY 1 DO
+		rawPublishData[6+m+x] := ANY_TO_USINT(ASCII(data,x));
+		END_FOR;
+		
+		rawPublishData[1] := qos_w + retainMsg_USINT;
+		rawPublishData[2] := ANY_TO_USINT(m+y+4);
+		rawPublishData[3] := any_to_usint(SHR(AND_MASK(m,65280),8)); (*Topic Length: MSB*)
+		rawPublishData[4] := any_to_usint(AND_MASK(m,255)) ; (*Topic Length: LSB*)
+		
+		publishRTrig(publish);
+		copqRTrig(COP_1.Sts=1);	
+		
+		IF publishRTrig.Q THEN
+			msgDone := FALSE;
+			msgError:= FALSE;
+			identifier := identifier + 1;
+		END_IF;
+		
+		COP_1(publishRTrig.Q, rawPublishData,0, publishData, 0, ANY_TO_UINT(6+m+y), FALSE);
+		publishLen := ANY_TO_UINT(6+m+y);
+		SOCKET_WRITE_1(copqRTrig.q, instance, 0, noSocAddr, publishData, ANY_TO_UINT(6+m+y), 0);
+		
+		IF SOCKET_WRITE_1.Done THEN
+			msgDone := TRUE;
+			msgError := FALSE;
+		END_IF;
+		
+		IF SOCKET_WRITE_1.Error THEN
+			msgDone := FALSE;
+			msgError := TRUE;
+		END_IF;
+		
+	52:
+
+		m := MLEN(topicName);
+		FOR n:= 1 TO m BY 1 DO
+		rawPublishData[4+n] := ANY_TO_USINT(ASCII(topicName,n));
+		END_FOR;
+		
+		rawPublishData[5+m] := any_to_usint(SHR(AND_MASK(identifier,65280),8)); (*Identifier: MSB*)
+		rawPublishData[6+m] := any_to_usint(AND_MASK(identifier,255)) ; (*Topic Length: LSB*)
+			
+		y := MLEN(data);
+		FOR x:= 1 TO y BY 1 DO
+		rawPublishData[6+m+x] := ANY_TO_USINT(ASCII(data,x));
+		END_FOR;
+		
+		rawPublishData[1] := qos_w + retainMsg_USINT;
+		rawPublishData[2] := ANY_TO_USINT(m+y+4);
+		rawPublishData[3] := any_to_usint(SHR(AND_MASK(m,65280),8)); (*Topic Length: MSB*)
+		rawPublishData[4] := any_to_usint(AND_MASK(m,255)) ; (*Topic Length: LSB*)
+
+		publishRTrig(publish);
+		copqRTrig(COP_1.Sts=1);	
+		
+		IF publishRTrig.Q THEN
+		msgDone := FALSE;
+			identifier := identifier + 1;
+		END_IF;
+		
+		COP_1(publishRTrig.Q, rawPublishData,0, publishData, 0, ANY_TO_UINT(6+m+y), FALSE);
+		publishLen := ANY_TO_UINT(6+m+y);
+		SOCKET_WRITE_1(copqRTrig.q, instance, 0, noSocAddr, publishData, ANY_TO_UINT(6+m+y), 0);
+		
+		
+		
+		COP_2(inboundData[1]=80 AND SOCKET_WRITE_1.Done , inboundData, 0, pubInboundData, 0, 256, FALSE);
+		
+		cop2_rtrig(COP_2.Sts=1);
+		COP_3(cop2_rtrig.Q, pubInboundData, 2, inboundMsgIdentifier, 0, 1, FALSE);
+		
+		qos2PubAckData[1] := 98;
+		qos2PubAckData[2] := 2;
+		qos2PubAckData[3] := any_to_usint(SHR(AND_MASK(ANY_TO_DINT(inboundMsgIdentifier),65280),8));
+		qos2PubAckData[4] := any_to_usint(AND_MASK(ANY_TO_DINT(inboundMsgIdentifier),255));
+		
+		COP3_rTrig(COP_3.Sts=1);		
+		SOCKET_WRITE_2(COP3_rTrig.Q , instance, 0, noSocAddr, qos2PubAckData, 4, 0); (*Ethernet socket check sum error. Correct length setting is 4*)
+		
+		IF inboundData[1]=112 AND SOCKET_WRITE_2.Done THEN
+			msgDone := TRUE;
+			msgError := FALSE;
+		END_IF;
+		
+		IF SOCKET_WRITE_1.Error OR SOCKET_WRITE_2.Error THEN
+			msgDone := FALSE;
+			msgError := TRUE;
+		END_IF;
+		
+ELSE
+	
+END_CASE;		
+		
+	
+
+ELSE
+	FBENO := FALSE;
+	identifier := 1;
+	msgDone := FALSE;
+	msgError := FALSE;
+END_IF;
+
+(*Map inputs to internal variables*)
+topicName := topicName_In;
+data := data_In;
+publish := publish_Cmd;
+instance := instance_In;
+qos := QoS_In;
+retainMsg := retain_In;
+
+FOR h:= 1 TO 256 BY 1 DO
+	inboundData[h] := respondData_In[h];
+END_FOR;
+
+
+(*Map outputs to internal variables*)
+Sts_Done := msgDone;
+Sts_Error := msgError;
+END_FUNCTION_BLOCK]]></PouBody>
+  <PouUIProperties>
+    <Root Version="7">
+  <LanguageContainerStyle CommentTextColor="Green" CommentFont="Courier New, 10pt" PonctuationTextColor="Black" PonctuationFont="Courier New, 10pt" IdentifierTextColor="Black" IdentifierFont="Courier New, 10pt" OperatorTextColor="Black" OperatorFont="Courier New, 10pt" ReservedWordTextColor="Fuchsia" ReservedWordFont="Courier New, 10pt" PouTextColor="BlueViolet" PouFont="Courier New, 10pt" NumberTextColor="Firebrick" NumberFont="Courier New, 10pt" StringTextColor="Gray" StringFont="Courier New, 10pt" EditorTextAreaBackgroundColor="White" EditorFont="Courier New, 10pt" Index="0" />
+</Root>
+  </PouUIProperties>
+</Pou>
