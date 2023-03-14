@@ -1,0 +1,25 @@
+PROGRAM HeartBeat
+MaxTime := T#3s;
+// Set input for TON_1
+in := connectCmd;
+
+// Trigger TON_1 with MaxTime delay
+TON_1(in, MaxTime);
+
+// Set publishHeartBeat variable to TON_1 output
+publishHeartBeat := TON_1.Q;
+
+// Publish heart beat message if TON_1 output is true
+IF publishHeartBeat THEN
+    heartBeatVar := '{"Model": ' + ANY_TO_STRING(__SYSVA_RESNAME) + ', "Mode": ' + ANY_TO_STRING(__SYSVA_RESMODE) + ', "Scan counter": ' + ANY_TO_STRING(__SYSVA_SCANCNT) + '}';
+    pubData_In := heartBeatVar;
+    pubTopic_In := 'ISE589/BBK/Lab3/Heart_Beat';
+    publish := TRUE;
+
+    // Reset TON_1 input with MaxTime delay
+    in := FALSE;
+    TON_1(in, MaxTime);
+ELSE
+    publish := FALSE;
+END_IF;
+END_PROGRAM

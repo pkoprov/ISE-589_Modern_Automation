@@ -1,0 +1,73 @@
+PROGRAM MQTT_Client
+#info= QLD
+BOF
+
+
+(**)
+
+SOR  [0,1] (**) (**)
+EOR [1,0]
+
+
+(**)
+
+SOR  [0,2] (**) (**)  XIO  [1,0] (*_IO_EM_DI_00*) (**)  XIO  [2,0] (*resetMQTT*) (**)  FB  [3,0] (*RA_MQTT_CONNECT*) (*MQTT_Connect_1*) ( (*FBEN:*)(**) (**)  , (*ServerIP_Cfg:*)(*locServer*) (**)  , (*myUniqueID:*)(*clientName*) (**)  , (*Connect_Cmd:*)(*connectCmd*) (**)  , (*disConnect_Cmd:*)(*disconnectCmd*) (**)  , (*userName_In:*)(*userID*) (**)  , (*password_In:*)(*userPass*) (**) ; (*FBENO:*)(**) (**)  , (*connection_Sts:*)(*socketSts*) (**)  , (*Instance_Out:*)(*MQTTinstance*) (**)  , (*topicName_Out:*)(*TopicName*) (**)  , (*topicData_Out:*)(*TopicData*) (**)  , (*sbscrbData_Index:*)(*dataPointer*) (**)  , (*resultData_Out:*)(*resultData*) (**) )
+EOR [6,0]
+
+
+(**)
+
+SOR  [0,10] (**) (**)  XIP  [1,0] (*subscribe*) (**)  FB  [2,0] (*+*) (*8*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*uniquSubIden*) (**)  , (*i2:*)(*1*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*uniquSubIden*) (**) )  
+ BST  FB  [5,0] (*1 gain*) (*10*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*topicName_input*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*subTopicName*) (**) )
+   NXB  OTE  [5,2] (*subscribeCmd*) (**)
+ BND
+
+EOR [8,0]
+
+
+(**)
+
+SOR  [0,14] (**) (**)  XIP  [1,0] (*unsubscribe*) (**)  FB  [2,0] (*+*) (*8*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*uniquSubIden*) (**)  , (*i2:*)(*1*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*uniquSubIden*) (**) )  
+ BST  FB  [5,0] (*1 gain*) (*10*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*topicName_input*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*subTopicName*) (**) )
+   NXB  OTE  [5,2] (*unsubscribeCmd*) (**)
+ BND
+
+EOR [8,0]
+
+
+(**)
+
+SOR  [0,18] (**) (**)  FB  [1,0] (*=*) (*9*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*socketSts*) (**)  , (*i2:*)(*9*) (**) ; (*o1:*)(**) (**) )  FB  [4,0] (*RA_MQTT_SUBSCRIBE*) (*MQTT_Subscribe_1*) ( (*FBEN:*)(**) (**)  , (*instance_In:*)(*MQTTinstance*) (**)  , (*subIdentifier_In:*)(*uniquSubIden*) (**)  , (*topicName_In:*)(*subTopicName*) (**)  , (*QOS_In:*)(*subQoS*) (**)  , (*subscribe_Cmd:*)(*subscribeCmd*) (**)  , (*unsubscribe_Cmd:*)(*unsubscribeCmd*) (**)  , (*respondData_In:*)(*resultData*) (**) ; (*FBENO:*)(**) (**)  , (*Sts_Done:*)(**) (**)  , (*Sts_Error:*)(**) (**) )
+EOR [7,0]
+
+
+(**)
+
+SOR  [0,27] (**) (**)  XIO  [1,0] (*_IO_EM_DI_00*) (**)  XIP  [2,0] (*publish*) (**)  
+ BST  
+ BST  FB  [3,0] (*1 gain*) (*11*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*pubTopic_In*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*pubTopic*) (**) )
+   NXB  FB  [3,2] (*1 gain*) (*11*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*pubData_In*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*pubData*) (**) )
+ BND
+
+   NXB  OTE  [3,4] (*publishCmd*) (**)
+ BND
+
+EOR [6,0]
+
+
+(**)
+
+SOR  [0,33] (**) (**)  FB  [1,0] (*=*) (*9*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*socketSts*) (**)  , (*i2:*)(*9*) (**) ; (*o1:*)(**) (**) )  FB  [4,0] (*RA_MQTT_PUBLISH*) (*MQTT_Publish_1*) ( (*FBEN:*)(**) (**)  , (*instance_In:*)(*MQTTinstance*) (**)  , (*topicName_In:*)(*pubTopic*) (**)  , (*data_In:*)(*pubData*) (**)  , (*QoS_In:*)(*pubQoS*) (**)  , (*publish_Cmd:*)(*publishCmd*) (**)  , (*respondData_In:*)(*resultData*) (**) ; (*FBENO:*)(**) (**)  , (*Sts_Done:*)(**) (**)  , (*Sts_Error:*)(**) (**) )
+EOR [7,0]
+
+
+(**)
+
+SOR  [0,41] (**) (**)  FB  [1,0] (*1 gain*) (*14*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*dataPointer*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*seq*) (**) )
+EOR [4,0]
+EOF
+#end_info
+#info= ID_MAX
+NextId=14
+#end_info
+END_PROGRAM

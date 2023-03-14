@@ -1,0 +1,491 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Pou FileVersion="200.00.006" Name="RA_MQTT_CONNECT" ElementGuid="5314fd7f-d351-45f4-98bc-27e5afaa23c8" Comment="" SingleTextLine="" Language="ST" Localization="Prj" GenDebugInfo="false" UseResPassword="true" GenerateSymbMon="true" Is1499="false" CustomFbd="0" GroupName="(User defined)">
+  <FunctionBlock IdentifierNb="0" Keyword="" InitInstance="false" SymbMonExtraBytes="128" />
+  <LocalVars>
+    <Variable Name="FBEN" Comment="" Address="" Alias="" StringSize="0" DataType="BOOL" InitialValue="" Modifier="Constant" Kind="VarInput" AccessRights="Read" Direction="Input" CommentFields="" Attributes="0" />
+    <Variable Name="ServerIP_Cfg" Comment="" Address="" Alias="" StringSize="0" DataType="SOCKADDR_CFG" InitialValue="" Modifier="Constant" Kind="VarInput" AccessRights="Read" Direction="Input" CommentFields="" Attributes="0" />
+    <Variable Name="myUniqueID" Comment="" Address="" Alias="" StringSize="80" DataType="STRING" InitialValue="" Modifier="Constant" Kind="VarInput" AccessRights="Read" Direction="Input" CommentFields="" Attributes="0" />
+    <Variable Name="Connect_Cmd" Comment="" Address="" Alias="" StringSize="0" DataType="BOOL" InitialValue="" Modifier="Constant" Kind="VarInput" AccessRights="Read" Direction="Input" CommentFields="" Attributes="0" />
+    <Variable Name="disConnect_Cmd" Comment="" Address="" Alias="" StringSize="0" DataType="BOOL" InitialValue="" Modifier="Constant" Kind="VarInput" AccessRights="Read" Direction="Input" CommentFields="" Attributes="0" />
+    <Variable Name="userName_In" Comment="" Address="" Alias="" StringSize="80" DataType="STRING" InitialValue="" Modifier="Constant" Kind="VarInput" AccessRights="Read" Direction="Input" CommentFields="" Attributes="0" />
+    <Variable Name="password_In" Comment="" Address="" Alias="" StringSize="80" DataType="STRING" InitialValue="" Modifier="Constant" Kind="VarInput" AccessRights="Read" Direction="Input" CommentFields="" Attributes="0" />
+    <Variable Name="FBENO" Comment="" Address="" Alias="" StringSize="0" DataType="BOOL" InitialValue="" Modifier="Constant" Kind="VarOutput" AccessRights="Write" Direction="Output" CommentFields="" Attributes="0" />
+    <Variable Name="connection_Sts" Comment="" Address="" Alias="" StringSize="0" DataType="USINT" InitialValue="" Modifier="Constant" Kind="VarOutput" AccessRights="Write" Direction="Output" CommentFields="" Attributes="0" />
+    <Variable Name="Instance_Out" Comment="" Address="" Alias="" StringSize="0" DataType="UDINT" InitialValue="" Modifier="Constant" Kind="VarOutput" AccessRights="Write" Direction="Output" CommentFields="" Attributes="0" />
+    <Variable Name="topicName_Out" Comment="" Address="" Alias="" StringSize="80" DataType="STRING" InitialValue="" Modifier="Constant" Kind="VarOutput" AccessRights="Write" Direction="Output" CommentFields="" Attributes="0">
+      <Dimension Lower="1" Upper="10" />
+    </Variable>
+    <Variable Name="topicData_Out" Comment="" Address="" Alias="" StringSize="80" DataType="STRING" InitialValue="" Modifier="Constant" Kind="VarOutput" AccessRights="Write" Direction="Output" CommentFields="" Attributes="0">
+      <Dimension Lower="1" Upper="10" />
+    </Variable>
+    <Variable Name="sbscrbData_Index" Comment="" Address="" Alias="" StringSize="0" DataType="DINT" InitialValue="" Modifier="Constant" Kind="VarOutput" AccessRights="Write" Direction="Output" CommentFields="" Attributes="0" />
+    <Variable Name="resultData_Out" Comment="" Address="" Alias="" StringSize="0" DataType="USINT" InitialValue="" Modifier="Constant" Kind="VarOutput" AccessRights="Write" Direction="Output" CommentFields="" Attributes="0">
+      <Dimension Lower="1" Upper="256" />
+    </Variable>
+    <Variable Name="oneSecPulse" Comment="" Address="" Alias="" StringSize="0" DataType="TON" InitialValue="" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0" />
+    <Variable Name="msgInfoSts" Comment="" Address="" Alias="" StringSize="0" DataType="SOCKET_INFO" InitialValue="" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0" />
+    <Variable Name="clrMsgInfoStsDiag" Comment="" Address="" Alias="" StringSize="0" DataType="BOOL" InitialValue="" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0" />
+    <Variable Name="SOCKET_CREATE_1" Comment="" Address="" Alias="" StringSize="0" DataType="SOCKET_CREATE" InitialValue=",,,,4" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0" />
+    <Variable Name="noSocAddrCfg" Comment="" Address="" Alias="" StringSize="0" DataType="SOCKADDR_CFG" InitialValue="" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0" />
+    <Variable Name="socInstance" Comment="" Address="" Alias="" StringSize="0" DataType="UDINT" InitialValue="" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0" />
+    <Variable Name="openSoc" Comment="" Address="" Alias="" StringSize="0" DataType="BOOL" InitialValue="" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0" />
+    <Variable Name="SOCKET_OPEN_1" Comment="" Address="" Alias="" StringSize="0" DataType="SOCKET_OPEN" InitialValue=",2(),,,FALSE" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0" />
+    <Variable Name="desAddrCfg" Comment="" Address="" Alias="" StringSize="0" DataType="SOCKADDR_CFG" InitialValue="" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0" />
+    <Variable Name="connectServer" Comment="" Address="" Alias="" StringSize="0" DataType="BOOL" InitialValue="" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0" />
+    <Variable Name="SOCKET_WRITE_1" Comment="" Address="" Alias="" StringSize="0" DataType="SOCKET_WRITE" InitialValue=",2(),,,2(),FALSE,0" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0" />
+    <Variable Name="connectServerData" Comment="" Address="" Alias="" StringSize="0" DataType="USINT" InitialValue="" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0">
+      <Dimension Lower="1" Upper="256" />
+    </Variable>
+    <Variable Name="connectServerDataLength" Comment="" Address="" Alias="" StringSize="0" DataType="UINT" InitialValue="" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0" />
+    <Variable Name="clientName" Comment="" Address="" Alias="" StringSize="80" DataType="STRING" InitialValue="" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0" />
+    <Variable Name="n" Comment="" Address="" Alias="" StringSize="0" DataType="DINT" InitialValue="" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0" />
+    <Variable Name="m" Comment="" Address="" Alias="" StringSize="0" DataType="DINT" InitialValue="" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0" />
+    <Variable Name="rawConnectData" Comment="" Address="" Alias="" StringSize="0" DataType="USINT" InitialValue="" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0">
+      <Dimension Lower="1" Upper="256" />
+    </Variable>
+    <Variable Name="COP_1" Comment="" Address="" Alias="" StringSize="0" DataType="COP" InitialValue=",,,,2(),,2(0),2(0)" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0" />
+    <Variable Name="connectRTrig" Comment="" Address="" Alias="" StringSize="0" DataType="R_TRIG" InitialValue="" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0" />
+    <Variable Name="readSoc" Comment="" Address="" Alias="" StringSize="0" DataType="BOOL" InitialValue="" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0" />
+    <Variable Name="SOCKET_READ_1" Comment="" Address="" Alias="" StringSize="0" DataType="SOCKET_READ" InitialValue=",2(),2(),,FALSE,0" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0" />
+    <Variable Name="respondData" Comment="" Address="" Alias="" StringSize="0" DataType="USINT" InitialValue="" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0">
+      <Dimension Lower="1" Upper="256" />
+    </Variable>
+    <Variable Name="FiftySecPulse" Comment="" Address="" Alias="" StringSize="0" DataType="TON" InitialValue="" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0" />
+    <Variable Name="KeepAlivePing" Comment="" Address="" Alias="" StringSize="0" DataType="SOCKET_WRITE" InitialValue=",2(),,,2(),FALSE,0" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0" />
+    <Variable Name="pingData" Comment="" Address="" Alias="" StringSize="0" DataType="USINT" InitialValue="224,4" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0">
+      <Dimension Lower="1" Upper="10" />
+    </Variable>
+    <Variable Name="connectMQTT" Comment="" Address="" Alias="" StringSize="0" DataType="BOOL" InitialValue="" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0" />
+    <Variable Name="disConnectMQTT" Comment="" Address="" Alias="" StringSize="0" DataType="BOOL" InitialValue="" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0" />
+    <Variable Name="disConnectRTrig" Comment="" Address="" Alias="" StringSize="0" DataType="R_TRIG" InitialValue="" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0" />
+    <Variable Name="SOCKET_WRITE_2" Comment="" Address="" Alias="" StringSize="0" DataType="SOCKET_WRITE" InitialValue=",2(),,,2(),FALSE,0" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0" />
+    <Variable Name="disConnectServerData" Comment="" Address="" Alias="" StringSize="0" DataType="USINT" InitialValue="" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0">
+      <Dimension Lower="1" Upper="10" />
+    </Variable>
+    <Variable Name="retainConnection" Comment="" Address="" Alias="" StringSize="0" DataType="BOOL" InitialValue="" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0" />
+    <Variable Name="delSoc" Comment="" Address="" Alias="" StringSize="0" DataType="BOOL" InitialValue="" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0" />
+    <Variable Name="SOCKET_DELETE_1" Comment="" Address="" Alias="" StringSize="0" DataType="SOCKET_DELETE" InitialValue="" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0" />
+    <Variable Name="delSocRTrig" Comment="" Address="" Alias="" StringSize="0" DataType="R_TRIG" InitialValue="" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0" />
+    <Variable Name="disConnect_Lat" Comment="" Address="" Alias="" StringSize="0" DataType="BOOL" InitialValue="" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0" />
+    <Variable Name="readSocRTrig" Comment="" Address="" Alias="" StringSize="0" DataType="R_TRIG" InitialValue="" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0" />
+    <Variable Name="listenSeq" Comment="" Address="" Alias="" StringSize="0" DataType="DINT" InitialValue="" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0" />
+    <Variable Name="x" Comment="" Address="" Alias="" StringSize="0" DataType="DINT" InitialValue="" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0" />
+    <Variable Name="copMsg" Comment="" Address="" Alias="" StringSize="0" DataType="BOOL" InitialValue="" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0" />
+    <Variable Name="COP_2" Comment="" Address="" Alias="" StringSize="0" DataType="COP" InitialValue=",,,,2(),,2(0),2(0)" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0" />
+    <Variable Name="tempSubscribeData" Comment="" Address="" Alias="" StringSize="0" DataType="USINT" InitialValue="" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0">
+      <Dimension Lower="1" Upper="256" />
+    </Variable>
+    <Variable Name="COP_3" Comment="" Address="" Alias="" StringSize="0" DataType="COP" InitialValue=",,,,2(),,2(0),2(0)" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0" />
+    <Variable Name="copMsg2" Comment="" Address="" Alias="" StringSize="0" DataType="BOOL" InitialValue="" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0" />
+    <Variable Name="topicData" Comment="" Address="" Alias="" StringSize="80" DataType="STRING" InitialValue="" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0">
+      <Dimension Lower="1" Upper="10" />
+    </Variable>
+    <Variable Name="y" Comment="" Address="" Alias="" StringSize="0" DataType="UINT" InitialValue="" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0" />
+    <Variable Name="z" Comment="" Address="" Alias="" StringSize="0" DataType="DINT" InitialValue="" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0" />
+    <Variable Name="COP_4" Comment="" Address="" Alias="" StringSize="0" DataType="COP" InitialValue=",,,,2(),,2(0),2(0)" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0" />
+    <Variable Name="tempTopicData" Comment="" Address="" Alias="" StringSize="0" DataType="USINT" InitialValue="" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0">
+      <Dimension Lower="1" Upper="256" />
+    </Variable>
+    <Variable Name="COP_5" Comment="" Address="" Alias="" StringSize="0" DataType="COP" InitialValue=",,,,2(),,2(0),2(0)" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0" />
+    <Variable Name="topicName" Comment="" Address="" Alias="" StringSize="80" DataType="STRING" InitialValue="" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0">
+      <Dimension Lower="1" Upper="10" />
+    </Variable>
+    <Variable Name="cop_6" Comment="" Address="" Alias="" StringSize="0" DataType="COP" InitialValue=",,,,2(),,2(0),2(0)" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0" />
+    <Variable Name="getTopicLen" Comment="" Address="" Alias="" StringSize="0" DataType="BOOL" InitialValue="" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0" />
+    <Variable Name="topicLen" Comment="" Address="" Alias="" StringSize="0" DataType="UINT" InitialValue="" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0">
+      <Dimension Lower="1" Upper="1" />
+    </Variable>
+    <Variable Name="connectFlag" Comment="" Address="" Alias="" StringSize="0" DataType="USINT" InitialValue="" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0" />
+    <Variable Name="userName" Comment="" Address="" Alias="" StringSize="80" DataType="STRING" InitialValue="" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0" />
+    <Variable Name="password" Comment="" Address="" Alias="" StringSize="80" DataType="STRING" InitialValue="" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0" />
+    <Variable Name="willRetain" Comment="" Address="" Alias="" StringSize="0" DataType="BOOL" InitialValue="" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0" />
+    <Variable Name="QoS" Comment="" Address="" Alias="" StringSize="0" DataType="USINT" InitialValue="" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0" />
+    <Variable Name="willTopic" Comment="" Address="" Alias="" StringSize="80" DataType="STRING" InitialValue="" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0" />
+    <Variable Name="clean" Comment="" Address="" Alias="" StringSize="0" DataType="BOOL" InitialValue="" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0" />
+    <Variable Name="willTopicLen" Comment="" Address="" Alias="" StringSize="0" DataType="DINT" InitialValue="" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0" />
+    <Variable Name="willDataLen" Comment="" Address="" Alias="" StringSize="0" DataType="DINT" InitialValue="" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0" />
+    <Variable Name="willData" Comment="" Address="" Alias="" StringSize="80" DataType="STRING" InitialValue="" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0" />
+    <Variable Name="userNameLen" Comment="" Address="" Alias="" StringSize="0" DataType="DINT" InitialValue="" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0" />
+    <Variable Name="pwLen" Comment="" Address="" Alias="" StringSize="0" DataType="DINT" InitialValue="" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0" />
+    <Variable Name="i" Comment="" Address="" Alias="" StringSize="0" DataType="DINT" InitialValue="" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0" />
+    <Variable Name="j" Comment="" Address="" Alias="" StringSize="0" DataType="DINT" InitialValue="" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0" />
+    <Variable Name="k" Comment="" Address="" Alias="" StringSize="0" DataType="DINT" InitialValue="" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0" />
+    <Variable Name="l" Comment="" Address="" Alias="" StringSize="0" DataType="DINT" InitialValue="" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0" />
+    <Variable Name="willTopic_In" Comment="" Address="" Alias="" StringSize="80" DataType="STRING" InitialValue="" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0" />
+    <Variable Name="willData_In" Comment="" Address="" Alias="" StringSize="80" DataType="STRING" InitialValue="" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0" />
+    <Variable Name="noWillData" Comment="" Address="" Alias="" StringSize="0" DataType="BOOL" InitialValue="" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0" />
+    <Variable Name="userNameByte" Comment="" Address="" Alias="" StringSize="0" DataType="DINT" InitialValue="" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0" />
+    <Variable Name="passwordByte" Comment="" Address="" Alias="" StringSize="0" DataType="DINT" InitialValue="" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0" />
+    <Variable Name="willTopicByte" Comment="" Address="" Alias="" StringSize="0" DataType="DINT" InitialValue="" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0" />
+    <Variable Name="willDataByte" Comment="" Address="" Alias="" StringSize="0" DataType="DINT" InitialValue="" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0" />
+    <Variable Name="ByteLen" Comment="" Address="" Alias="" StringSize="0" DataType="DINT" InitialValue="" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0" />
+    <Variable Name="createSOc_rtrig" Comment="" Address="" Alias="" StringSize="0" DataType="R_TRIG" InitialValue="" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0" />
+    <Variable Name="createSoc_ton" Comment="" Address="" Alias="" StringSize="0" DataType="TON" InitialValue="" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0" />
+    <Variable Name="connectSever_rtrig" Comment="" Address="" Alias="" StringSize="0" DataType="R_TRIG" InitialValue="" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0" />
+    <Variable Name="mqttConnect_IP" Comment="" Address="" Alias="" StringSize="0" DataType="BOOL" InitialValue="" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0" />
+    <Variable Name="socketWrite_Error_rTrig" Comment="" Address="" Alias="" StringSize="0" DataType="R_TRIG" InitialValue="" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0" />
+    <Variable Name="socDelete" Comment="" Address="" Alias="" StringSize="0" DataType="SOCKET_DELETE" InitialValue="" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0" />
+    <Variable Name="opsoc_ton_rTrig" Comment="" Address="" Alias="" StringSize="0" DataType="R_TRIG" InitialValue="" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0" />
+    <Variable Name="QOS_In" Comment="" Address="" Alias="" StringSize="0" DataType="USINT" InitialValue="" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0" />
+    <Variable Name="COP_7" Comment="" Address="" Alias="" StringSize="0" DataType="COP" InitialValue=",,,,2(),,2(0),2(0)" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0" />
+    <Variable Name="respondBuffer" Comment="" Address="" Alias="" StringSize="0" DataType="USINT" InitialValue="" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0">
+      <Dimension Lower="1" Upper="256" />
+    </Variable>
+    <Variable Name="c" Comment="" Address="" Alias="" StringSize="0" DataType="DINT" InitialValue="" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0" />
+    <Variable Name="readDone" Comment="" Address="" Alias="" StringSize="0" DataType="BOOL" InitialValue="" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0" />
+    <Variable Name="keepAlive" Comment="" Address="" Alias="" StringSize="0" DataType="DINT" InitialValue="" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0" />
+    <Variable Name="keepAlive_In" Comment="" Address="" Alias="" StringSize="0" DataType="DINT" InitialValue="120" Modifier="Constant" Kind="Var" AccessRights="ReadWrite" Direction="Local" CommentFields="" Attributes="0" />
+  </LocalVars>
+  <PouBody><![CDATA[FUNCTION_BLOCK RA_MQTT_CONNECT
+(* =========================================================================================================================
+	[UDFB Name]					:RA_MQTT_CONNET
+	[Category]					:Communication
+	[Description]				:Connect Micro800 to MQTT Broker/Server
+	[Author]					:Rockwell Automation
+	[Created using CCW Version]	:12.0
+	[Feedback]					:RASampleCode@ra.rockwell.com
+	[Revision History]			:2020-Feb - Release
+	[Notes]						: 
+============================================================================================================================ *)
+oneSecPulse(not oneSecPulse.Q, t#1s);
+msgInfoSts(oneSecPulse.Q, socInstance, clrMsgInfoStsDiag);
+
+	ByteLen := willTopicByte + willDataByte + userNameByte + passwordByte;
+
+IF FBEN THEN
+	FBENO := TRUE;
+	(*Formulate connect data*)
+	rawConnectData[1] := 16; (*Message type: Connect Command*)
+	rawConnectData[2] := ANY_TO_USINT(12+m+willTopicLen+willDataLen+userNameLen+pwLen+ByteLen); (*Message length (12+m)*)
+	rawConnectData[3] := 0; (*Protocol Name Length: MSB*)
+	rawConnectData[4] := 4; (*Protocol Name Length: LSB*)
+	rawConnectData[5] := 77; (*ProtocolName: 'M'*)
+	rawConnectData[6] := 81; (*ProtocolName: 'Q'*)
+	rawConnectData[7] := 84; (*ProtocolName: 'T'*)
+	rawConnectData[8] := 84; (*ProtocolName: 'T'*)
+	rawConnectData[9] := 4; (*MQTT Version v3.1.1*)
+	rawConnectData[10] := connectFlag; (*Connect Flags: QoS Level0, Clean Session Flag*)
+	rawConnectData[11] := any_to_usint(SHR(AND_MASK(keepAlive,65280),8)); (*Keep alive: MSB*)
+	rawConnectData[12] := any_to_usint(AND_MASK(keepAlive,255)) ; (*Keep alive: LSB*)
+	rawConnectData[13] := any_to_usint(SHR(AND_MASK(m,65280),8)); (*Client ID Length: MSB*)
+	rawConnectData[14] := any_to_usint(AND_MASK(m,255)) ; (*Client ID Length: LSB*)
+
+	m := MLEN(clientName);
+	FOR n:= 1 TO m BY 1 DO
+		rawConnectData[14+n] := ANY_TO_USINT(ASCII(clientName,n));
+	END_FOR;
+
+	if willTopic <> '' THEN
+		rawConnectData[14+m+1] := any_to_usint(SHR(AND_MASK(willTopicLen,65280),8)); (*Will topic Length: MSB*)
+		rawConnectData[14+m+2] := any_to_usint(AND_MASK(willTopicLen,255)) ; (*Will topic Length: LSB*)
+
+		willTopicLen := MLEN(willTopic);
+		FOR i := 1 TO willTopicLen BY 1 DO
+			rawConnectData[14+m+2+i] := ANY_TO_USINT(ASCII(willTopic,i));
+		END_FOR;
+
+		rawConnectData[14+m+willTopicLen+3] := any_to_usint(SHR(AND_MASK(willDataLen,65280),8)); (*Will data Length: MSB*)
+		rawConnectData[14+m+willTopicLen+4] := any_to_usint(AND_MASK(willDataLen,255)) ; (*Will data Length: LSB*)
+
+		willDataLen := MLEN(willData);
+		FOR j := 1 TO willDataLen BY 1 DO
+			rawConnectData[14+m+willTopicLen+4+j] := ANY_TO_USINT(ASCII(willData,j));
+		END_FOR;
+
+		rawConnectData[14+m+willTopicLen+willDataLen+5] := any_to_usint(SHR(AND_MASK(userNameLen,65280),8)); (*Username Length: MSB*)
+		rawConnectData[14+m+willTopicLen+willDataLen+6] := any_to_usint(AND_MASK(userNameLen,255)) ; (*Username Length: LSB*)
+
+		userNameLen := MLEN(userName);
+		FOR k := 1 TO userNameLen BY 1 DO
+			rawConnectData[14+m+willTopicLen+willDataLen+6+k] := ANY_TO_USINT(ASCII(userName,k));
+		END_FOR;
+
+		rawConnectData[14+m+willTopicLen+willDataLen+userNameLen+7] := any_to_usint(SHR(AND_MASK(pwLen,65280),8)); (*Username Length: MSB*)
+		rawConnectData[14+m+willTopicLen+willDataLen+userNameLen+8] := any_to_usint(AND_MASK(pwLen,255)) ; (*Username Length: LSB*)
+
+		pwLen := MLEN(password);
+		FOR l := 1 TO pwLen BY 1 DO
+			rawConnectData[14+m+willTopicLen+willDataLen+userNameLen+8+l] := ANY_TO_USINT(ASCII(password,l));
+		END_FOR;
+	ELSE
+		
+		rawConnectData[14+m+1] := any_to_usint(SHR(AND_MASK(userNameLen,65280),8)); (*Username Length: MSB*)
+		rawConnectData[14+m+2] := any_to_usint(AND_MASK(userNameLen,255)) ; (*Username Length: LSB*)	
+		
+		userNameLen := MLEN(userName);
+		FOR k := 1 TO userNameLen BY 1 DO
+			rawConnectData[14+m+2+k] := ANY_TO_USINT(ASCII(userName,k));
+		END_FOR;
+
+		rawConnectData[14+m+userNameLen+3] := any_to_usint(SHR(AND_MASK(pwLen,65280),8)); (*Username Length: MSB*)
+		rawConnectData[14+m+userNameLen+4] := any_to_usint(AND_MASK(pwLen,255)) ; (*Username Length: LSB*)
+
+		pwLen := MLEN(password);
+		FOR l := 1 TO pwLen BY 1 DO
+			rawConnectData[14+m+userNameLen+4+l] := ANY_TO_USINT(ASCII(password,l));
+		END_FOR;
+	END_IF;
+
+	IF userName <> '' THEN 
+		connectFlag.7 := TRUE;
+		userNameByte := 2;
+	ELSE 
+		connectFlag.7 := FALSE;
+		userNameByte := 0;
+	END_IF;
+
+	IF password <> '' THEN 
+		connectFlag.6 := TRUE;
+		passwordByte := 2;
+	ELSE 
+		connectFlag.6 := FALSE;
+		passwordByte := 0;
+	END_IF;
+
+	IF willRetain THEN connectFlag.5 := TRUE;
+	ELSE connectFlag.5 := FALSE;
+	END_IF;
+
+	IF QoS = 2 THEN
+		connectFlag.4 := TRUE;
+		connectFlag.3 := FALSE;
+	ELSIF QoS = 1 THEN
+		connectFlag.4 := FALSE;
+		connectFlag.3 := TRUE;
+	ELSE
+		connectFlag.4 := FALSE;
+		connectFlag.3 := FALSE;
+	END_IF;
+
+	IF willTopic <> '' THEN 
+		connectFlag.2 := TRUE;
+		willTopicByte := 2;
+	ELSE 
+		connectFlag.2 := FALSE;
+		willTopicByte := 0;
+	END_IF;
+
+	IF willData <> '' THEN 
+		noWillData := FALSE;
+		willDataByte := 2;	
+	ELSE 
+		noWillData := TRUE;
+		willDataByte := 0;
+	END_IF;
+
+	IF clean THEN connectFlag.1 := TRUE;
+	ELSE connectFlag.1 := FALSE;
+	END_IF;
+
+	(*Formulate Keep alive or ping data*)
+	pingData[1] := 192;
+	pingData[2] := 0;
+
+	(*Formulate disconnect data*)
+	disConnectServerData[1] := 224;
+	disConnectServerData[2] := 0;
+
+	(*Connect to server and keep alive*)
+	connectRTrig(connectMQTT);
+	connectServerDataLength := ANY_TO_UINT(14+m+willTopicLen+willDataLen+userNameLen+pwLen+ByteLen);
+	COP_1(mqttConnect_IP, rawConnectData,0, connectServerData, 0, connectServerDataLength, FALSE);
+
+	createSoc_ton(mqttConnect_IP, t#1s);
+	SOCKET_CREATE_1(mqttConnect_IP and COP_1.Sts=1, 1, noSocAddrCfg, 0);
+	socInstance := SOCKET_CREATE_1.Instance;
+
+	opsoc_ton_rTrig(createSoc_ton.Q AND SOCKET_CREATE_1.Done);
+	SOCKET_OPEN_1(openSoc OR opsoc_ton_rTrig.Q , SOCKET_CREATE_1.Instance, 0, desAddrCfg, FALSE);
+
+	connectSever_rtrig(SOCKET_OPEN_1.Status.StatusBits.4);
+
+	SOCKET_WRITE_1(connectServer OR connectSever_rtrig.Q, SOCKET_CREATE_1.Instance, 0, noSocAddrCfg, connectServerData, connectServerDataLength, 0);
+
+	IF connectRTrig.Q THEN
+		mqttConnect_IP := TRUE;
+	END_IF;
+
+	createSOc_rtrig(SOCKET_WRITE_1.Status.StatusBits.4);
+	IF createSOc_rtrig.Q THEN
+		mqttConnect_IP := FALSE;
+	END_IF;
+
+	(*Keep alive ping every 50 second when connected with broker
+	As of 16th Jan 2020, There seems to be a bug with our ethernet stack. I have to send 10 bytes of data to avoid frame check sum error. The correct setting should be 2.
+	When sending 10 bytes, the messaging instruction would write 8 bytes of zeros into reserved area.*)
+	IF msgInfoSts.SocketState=9 THEN
+		FiftySecPulse(not FiftySecPulse.Q, t#50s);
+		KeepAlivePing(FiftySecPulse.Q, socInstance, 0, noSocAddrCfg, pingData, 2, 0);
+	END_IF;
+
+	(*Delete the instance when instruction execute with error*)
+	socketWrite_Error_rTrig(SOCKET_WRITE_1.Error or SOCKET_CREATE_1.Error OR SOCKET_OPEN_1.Error OR SOCKET_WRITE_2.Error);
+	socDelete(socketWrite_Error_rTrig.Q, socInstance);	
+
+
+	(*Once server is connected, listen for subscription*)
+	readSocRTrig (SOCKET_CREATE_1.Done AND SOCKET_OPEN_1.Done);
+	IF readSocRTrig.Q THEN
+		listenSeq := 100;
+	END_IF;
+
+	CASE listenSeq OF
+
+		100:
+			FOR x := 1 to 256 by 1 DO
+				respondData[x] := 0;
+			END_FOR;	
+			readSoc := false;
+			IF y >= 10 THEN
+				y := 0;
+			END_IF;
+			listenSeq := 101;
+		
+		101:
+			readSoc := TRUE;
+			IF SOCKET_READ_1.Busy THEN
+				listenSeq := 102;
+			END_IF;
+		
+		102:
+			COP_7(SOCKET_READ_1.Done, respondData, 0, respondBuffer, 0, 256, FALSE);
+			IF COP_7.Sts=1 THEN
+				listenSeq := 103;
+			END_IF;
+			
+		103:
+			getTopicLen := FALSE;
+			IF SOCKET_READ_1.Done AND (respondData[1]=52 or respondData[1]=53) THEN
+				listenSeq := 500; (*Respond for QoS2*)
+			ELSIF SOCKET_READ_1.Done AND (respondData[1]=50 or respondData[1]=51)THEN
+				listenSeq := 400; (*Respond for QoS1*)
+			ELSIF SOCKET_READ_1.Done AND (respondData[1]=48 or respondData[1]=49)THEN
+				listenSeq := 300; (*Respond for QoS0*)
+			ELSE
+				listenSeq := 100;
+			END_IF;	
+			
+			IF SOCKET_READ_1.Error OR (SOCKET_READ_1.Done AND NOT (respondData[1].4 AND respondData[1].5)) THEN
+				listenSeq := 100; (*Filter respond that are short. Typically respond from ping and disconnect server*)
+			END_IF;
+						
+		300:
+			getTopicLen := TRUE;
+			cop_6(getTopicLen, respondData, 2,topicLen, 0, 1, FALSE);
+			COP_2(cop_6.Sts = 1, respondData, ANY_TO_UINT(topicLen[1]+4), tempSubscribeData, 1, ANY_TO_UINT(SOCKET_READ_1.RxLength-4), FALSE);
+			COP_4(cop_6.Sts = 1, respondData, 4, tempTopicData, 1, topicLen[1], FALSE);
+			tempSubscribeData[1] := ANY_TO_USINT(SOCKET_READ_1.RxLength-4);
+			tempTopicData[1] := ANY_TO_USINT(topicLen[1]);
+			COP_3(COP_2.Sts=1, tempSubscribeData, 0, topicData, y, 1, TRUE);
+			COP_5(COP_2.Sts=1, tempTopicData, 0, topicName, y, 1, TRUE);		
+			IF COP_3.Sts=1 THEN
+				y := y + 1;
+				listenSeq := 100;
+			END_IF;	
+			
+		400:
+			getTopicLen := TRUE;
+			cop_6(getTopicLen, respondData, 2,topicLen, 0, 1, FALSE);
+			COP_2(cop_6.Sts = 1, respondData, ANY_TO_UINT(topicLen[1]+6), tempSubscribeData, 1, ANY_TO_UINT(SOCKET_READ_1.RxLength-4), FALSE);
+			COP_4(cop_6.Sts = 1, respondData, 4, tempTopicData, 1, topicLen[1], FALSE);
+			tempSubscribeData[1] := ANY_TO_USINT(SOCKET_READ_1.RxLength-6);
+			tempTopicData[1] := ANY_TO_USINT(topicLen[1]);
+			COP_3(COP_2.Sts=1, tempSubscribeData, 0, topicData, y, 1, TRUE);
+			COP_5(COP_2.Sts=1, tempTopicData, 0, topicName, y, 1, TRUE);		
+			IF COP_3.Sts=1 THEN
+				y := y + 1;
+				listenSeq := 100;
+			END_IF;				
+		
+		500:
+			getTopicLen := TRUE;
+			cop_6(getTopicLen, respondData, 2,topicLen, 0, 1, FALSE);
+			COP_2(cop_6.Sts = 1, respondData, ANY_TO_UINT(topicLen[1]+6), tempSubscribeData, 1, ANY_TO_UINT(SOCKET_READ_1.RxLength-4), FALSE);
+			COP_4(cop_6.Sts = 1, respondData, 4, tempTopicData, 1, topicLen[1], FALSE);
+			tempSubscribeData[1] := ANY_TO_USINT(SOCKET_READ_1.RxLength-6);
+			tempTopicData[1] := ANY_TO_USINT(topicLen[1]);
+			COP_3(COP_2.Sts=1, tempSubscribeData, 0, topicData, y, 1, TRUE);
+			COP_5(COP_2.Sts=1, tempTopicData, 0, topicName, y, 1, TRUE);		
+			IF COP_3.Sts=1 THEN
+				y := y + 1;
+				listenSeq := 100;
+			END_IF;				
+		
+	END_CASE;
+	SOCKET_READ_1(readSoc, socInstance, 86400000, 256, 0, respondData);	
+
+	(*Disconnect MQTT*)
+	disConnectRTrig(disConnectMQTT);
+	delSocRTrig(delSoc);
+	(*16th Jan 2020 There seems to be a bug with our ethernet stack. I have to send 10 bytes of data to avoid frame check sum error. The correct setting should be 2.
+	When sending 10 bytes, the messaging instruction wrote 8 bytes of zeros into reserved area*)
+	SOCKET_WRITE_2(disConnectRTrig.q, socInstance, 0, noSocAddrCfg, disConnectServerData, 8, 0); 
+	SOCKET_DELETE_1(delSocRTrig.q, socInstance);
+	IF disConnectRTrig.Q THEN
+		disConnect_Lat:= TRUE;
+	END_IF;
+	IF disConnect_Lat AND SOCKET_WRITE_2.Done AND msgInfoSts.SocketState=1 THEN
+		delSoc := TRUE;
+	END_IF;
+
+	IF disConnect_Lat AND msgInfoSts.SocketState=0 THEN
+		delSoc := FALSE;
+		disConnect_Lat := FALSE;
+	END_IF;
+ELSE
+	FBENO 			:= FALSE;
+	mqttConnect_IP 	:= FALSE;
+	readSoc			:= FALSE;
+	getTopicLen		:= FALSE;
+	copMsg			:= FALSE;
+	copMsg2			:= FALSE;
+	disConnect_Lat	:= FALSE;
+	delSoc			:= FALSE;
+END_IF;
+
+(*Map inputs to internal variables*)
+desAddrCfg.IPAddress[0]:= ServerIP_Cfg.IPAddress[0];
+desAddrCfg.IPAddress[1]:= ServerIP_Cfg.IPAddress[1];
+desAddrCfg.IPAddress[2]:= ServerIP_Cfg.IPAddress[2];
+desAddrCfg.IPAddress[3]:= ServerIP_Cfg.IPAddress[3];
+desAddrCfg.Port := ServerIP_Cfg.Port;
+IF myUniqueID = '' THEN
+	clientName := 'Micro8001';
+ELSE
+	clientName := myUniqueID;
+END_IF;
+connectMQTT := Connect_Cmd;
+disConnectMQTT := disConnect_Cmd;
+retainConnection := TRUE;
+QoS := QOS_In;
+willTopic := willTopic_In;
+willData := willData_In;
+userName := userName_In;
+password := password_In;
+keepAlive := 120; (*Can be deleted if user want to define their own keep alive duration*)
+
+(*Map internal variables to output*)
+Instance_Out := socInstance;
+connection_Sts := msgInfoSts.SocketState;
+
+IF z <= 10 THEN
+	FOR z := 1 to 10 by 1 DO
+		topicData_Out[z] := topicData[z];
+		topicName_Out[z] := topicName[z];
+	END_FOR;
+ELSE
+	z := 1;	
+END_IF;
+sbscrbData_Index := ANY_TO_DINT(y+1);
+
+FOR c := 1 to 256 by 1 DO
+	resultData_Out[c] := respondBuffer[c];
+END_FOR;	
+
+END_FUNCTION_BLOCK]]></PouBody>
+  <PouUIProperties>
+    <Root Version="7">
+  <LanguageContainerStyle CommentTextColor="Green" CommentFont="Courier New, 10pt" PonctuationTextColor="Black" PonctuationFont="Courier New, 10pt" IdentifierTextColor="Black" IdentifierFont="Courier New, 10pt" OperatorTextColor="Black" OperatorFont="Courier New, 10pt" ReservedWordTextColor="Fuchsia" ReservedWordFont="Courier New, 10pt" PouTextColor="BlueViolet" PouFont="Courier New, 10pt" NumberTextColor="Firebrick" NumberFont="Courier New, 10pt" StringTextColor="Gray" StringFont="Courier New, 10pt" EditorTextAreaBackgroundColor="White" EditorFont="Courier New, 10pt" Index="0" />
+</Root>
+  </PouUIProperties>
+</Pou>

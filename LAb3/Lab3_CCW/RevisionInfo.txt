@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RevisionInfo>
+  <CCWVersion>12</CCWVersion>
+  <Timestamp>2020-02-18T22:29:31.9690927-05:00</Timestamp>
+  <Description></Description>
+  <RevFileName>MQTT Client Sample Code v1.2_2020-02-18_10-29-31.rev</RevFileName>
+  <ProjectName>MQTT Client Sample Code v1.2</ProjectName>
+</RevisionInfo>

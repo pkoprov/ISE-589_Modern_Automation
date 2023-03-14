@@ -1,0 +1,182 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Pou FileVersion="200.00.006" Name="MQTT_Client" ElementGuid="ca7ba770-0234-4625-b4e9-749ee223dfd7" Comment="" SingleTextLine="" Language="LD" Localization="Prj" GenDebugInfo="false" UseResPassword="true" GenerateSymbMon="true" Is1499="false" CustomFbd="0" GroupName="(User defined)">
+  <Program />
+  <LocalVars>
+    <Variable Name="clientName" Comment="" Address="" Alias="" StringSize="80" DataType="STRING" InitialValue="" Modifier="NonRetain" Kind="Var" AccessRights="ReadWrite" RetainFlags="" CommentFields="" Attributes="0" GroupName="" />
+    <Variable Name="connectCmd" Comment="" Address="" Alias="" StringSize="0" DataType="BOOL" InitialValue="" Modifier="NonRetain" Kind="Var" AccessRights="ReadWrite" RetainFlags="" CommentFields="" Attributes="0" GroupName="" />
+    <Variable Name="disconnectCmd" Comment="" Address="" Alias="" StringSize="0" DataType="BOOL" InitialValue="" Modifier="NonRetain" Kind="Var" AccessRights="ReadWrite" RetainFlags="" CommentFields="" Attributes="0" GroupName="" />
+    <Variable Name="MQTTinstance" Comment="" Address="" Alias="" StringSize="0" DataType="UDINT" InitialValue="" Modifier="NonRetain" Kind="Var" AccessRights="ReadWrite" RetainFlags="" CommentFields="" Attributes="0" GroupName="" />
+    <Variable Name="publishCmd" Comment="" Address="" Alias="" StringSize="0" DataType="BOOL" InitialValue="" Modifier="NonRetain" Kind="Var" AccessRights="ReadWrite" RetainFlags="" CommentFields="" Attributes="0" GroupName="" />
+    <Variable Name="dataPointer" Comment="" Address="" Alias="" StringSize="0" DataType="DINT" InitialValue="" Modifier="NonRetain" Kind="Var" AccessRights="ReadWrite" RetainFlags="" CommentFields="" Attributes="0" GroupName="" />
+    <Variable Name="TopicName" Comment="" Address="" Alias="" StringSize="80" DataType="STRING" InitialValue="" Modifier="NonRetain" Kind="Var" AccessRights="ReadWrite" RetainFlags="" CommentFields="" Attributes="0" GroupName="">
+      <Dimension Lower="1" Upper="10" />
+    </Variable>
+    <Variable Name="TopicData" Comment="" Address="" Alias="" StringSize="80" DataType="STRING" InitialValue="" Modifier="NonRetain" Kind="Var" AccessRights="ReadWrite" RetainFlags="" CommentFields="" Attributes="0" GroupName="">
+      <Dimension Lower="1" Upper="10" />
+    </Variable>
+    <Variable Name="uniquSubIden" Comment="" Address="" Alias="" StringSize="0" DataType="DINT" InitialValue="" Modifier="NonRetain" Kind="Var" AccessRights="ReadWrite" RetainFlags="" CommentFields="" Attributes="0" GroupName="" />
+    <Variable Name="subscribeCmd" Comment="" Address="" Alias="" StringSize="0" DataType="BOOL" InitialValue="" Modifier="NonRetain" Kind="Var" AccessRights="ReadWrite" RetainFlags="" CommentFields="" Attributes="0" GroupName="" />
+    <Variable Name="locServer" Comment="" Address="" Alias="" StringSize="0" DataType="SOCKADDR_CFG" InitialValue="1883,(192,168,1,198)" Modifier="NonRetain" Kind="Var" AccessRights="ReadWrite" RetainFlags="" CommentFields="" Attributes="0" GroupName="" />
+    <Variable Name="startPublish" Comment="" Address="" Alias="" StringSize="0" DataType="BOOL" InitialValue="" Modifier="NonRetain" Kind="Var" AccessRights="ReadWrite" RetainFlags="" CommentFields="" Attributes="0" GroupName="" />
+    <Variable Name="userID" Comment="" Address="" Alias="" StringSize="80" DataType="STRING" InitialValue="" Modifier="NonRetain" Kind="Var" AccessRights="ReadWrite" RetainFlags="" CommentFields="" Attributes="0" GroupName="" />
+    <Variable Name="userPass" Comment="" Address="" Alias="" StringSize="80" DataType="STRING" InitialValue="" Modifier="NonRetain" Kind="Var" AccessRights="ReadWrite" RetainFlags="" CommentFields="" Attributes="0" GroupName="" />
+    <Variable Name="subQoS" Comment="" Address="" Alias="" StringSize="0" DataType="USINT" InitialValue="" Modifier="NonRetain" Kind="Var" AccessRights="ReadWrite" RetainFlags="" CommentFields="" Attributes="0" GroupName="" />
+    <Variable Name="subscribe" Comment="" Address="" Alias="" StringSize="0" DataType="BOOL" InitialValue="" Modifier="NonRetain" Kind="Var" AccessRights="ReadWrite" RetainFlags="" CommentFields="" Attributes="0" GroupName="" />
+    <Variable Name="unsubscribe" Comment="" Address="" Alias="" StringSize="0" DataType="BOOL" InitialValue="" Modifier="NonRetain" Kind="Var" AccessRights="ReadWrite" RetainFlags="" CommentFields="" Attributes="0" GroupName="" />
+    <Variable Name="unsubscribeCmd" Comment="" Address="" Alias="" StringSize="0" DataType="BOOL" InitialValue="" Modifier="NonRetain" Kind="Var" AccessRights="ReadWrite" RetainFlags="" CommentFields="" Attributes="0" GroupName="" />
+    <Variable Name="socketSts" Comment="" Address="" Alias="" StringSize="0" DataType="USINT" InitialValue="" Modifier="NonRetain" Kind="Var" AccessRights="ReadWrite" RetainFlags="" CommentFields="" Attributes="0" GroupName="" />
+    <Variable Name="resetMQTT" Comment="" Address="" Alias="" StringSize="0" DataType="BOOL" InitialValue="" Modifier="NonRetain" Kind="Var" AccessRights="ReadWrite" RetainFlags="" CommentFields="" Attributes="0" GroupName="" />
+    <Variable Name="resultData" Comment="" Address="" Alias="" StringSize="0" DataType="USINT" InitialValue="" Modifier="NonRetain" Kind="Var" AccessRights="ReadWrite" RetainFlags="" CommentFields="" Attributes="0" GroupName="">
+      <Dimension Lower="1" Upper="256" />
+    </Variable>
+    <Variable Name="MQTT_Subscribe_1" Comment="" Address="" Alias="" StringSize="0" DataType="RA_MQTT_SUBSCRIBE" InitialValue="" Modifier="NonRetain" Kind="Var" AccessRights="ReadWrite" RetainFlags="" CommentFields="" Attributes="0" GroupName="" />
+    <Variable Name="MQTT_Connect_1" Comment="" Address="" Alias="" StringSize="0" DataType="RA_MQTT_CONNECT" InitialValue="" Modifier="NonRetain" Kind="Var" AccessRights="ReadWrite" RetainFlags="" CommentFields="" Attributes="0" GroupName="" />
+    <Variable Name="MQTT_Publish_1" Comment="" Address="" Alias="" StringSize="0" DataType="RA_MQTT_PUBLISH" InitialValue="" Modifier="NonRetain" Kind="Var" AccessRights="ReadWrite" RetainFlags="" CommentFields="" Attributes="0" GroupName="" />
+    <Variable Name="pubQoS" Comment="" Address="" Alias="" StringSize="0" DataType="USINT" InitialValue="" Modifier="NonRetain" Kind="Var" AccessRights="ReadWrite" RetainFlags="" CommentFields="" Attributes="0" GroupName="" />
+    <Variable Name="topicName_input" Comment="" Address="" Alias="" StringSize="80" DataType="STRING" InitialValue="'micro800/topic1'" Modifier="NonRetain" Kind="Var" AccessRights="ReadWrite" RetainFlags="" CommentFields="" Attributes="0" GroupName="" />
+    <Variable Name="subTopicName" Comment="" Address="" Alias="" StringSize="80" DataType="STRING" InitialValue="" Modifier="NonRetain" Kind="Var" AccessRights="ReadWrite" RetainFlags="" CommentFields="" Attributes="0" GroupName="" />
+    <Variable Name="pubTopic_In" Comment="" Address="" Alias="" StringSize="80" DataType="STRING" InitialValue="'micro800/topic1'" Modifier="NonRetain" Kind="Var" AccessRights="ReadWrite" RetainFlags="" CommentFields="" Attributes="0" GroupName="" />
+    <Variable Name="pubTopic" Comment="" Address="" Alias="" StringSize="80" DataType="STRING" InitialValue="" Modifier="NonRetain" Kind="Var" AccessRights="ReadWrite" RetainFlags="" CommentFields="" Attributes="0" GroupName="" />
+    <Variable Name="pubData_In" Comment="" Address="" Alias="" StringSize="80" DataType="STRING" InitialValue="'Message sent'" Modifier="NonRetain" Kind="Var" AccessRights="ReadWrite" RetainFlags="" CommentFields="" Attributes="0" GroupName="" />
+    <Variable Name="pubData" Comment="" Address="" Alias="" StringSize="80" DataType="STRING" InitialValue="" Modifier="NonRetain" Kind="Var" AccessRights="ReadWrite" RetainFlags="" CommentFields="" Attributes="0" GroupName="" />
+    <Variable Name="publish" Comment="" Address="" Alias="" StringSize="0" DataType="BOOL" InitialValue="" Modifier="NonRetain" Kind="Var" AccessRights="ReadWrite" RetainFlags="" CommentFields="" Attributes="0" GroupName="" />
+  </LocalVars>
+  <PouBody><![CDATA[PROGRAM MQTT_Client
+#info= QLD
+BOF
+
+
+(**)
+
+SOR  [0,1] (**) (**)  XIO  [1,0] (*resetMQTT*) (**)  FB  [2,0] (*RA_MQTT_CONNECT*) (*MQTT_Connect_1*) ( (*FBEN:*)(**) (**)  , (*ServerIP_Cfg:*)(*locServer*) (**)  , (*myUniqueID:*)(*clientName*) (**)  , (*Connect_Cmd:*)(*connectCmd*) (**)  , (*disConnect_Cmd:*)(*disconnectCmd*) (**)  , (*userName_In:*)(*userID*) (**)  , (*password_In:*)(*userPass*) (**) ; (*FBENO:*)(**) (**)  , (*connection_Sts:*)(*socketSts*) (**)  , (*Instance_Out:*)(*MQTTinstance*) (**)  , (*topicName_Out:*)(*TopicName*) (**)  , (*topicData_Out:*)(*TopicData*) (**)  , (*sbscrbData_Index:*)(*dataPointer*) (**)  , (*resultData_Out:*)(*resultData*) (**) )
+EOR [5,0]
+
+
+(**)
+
+SOR  [0,9] (**) (**)  XIP  [1,0] (*subscribe*) (**)  FB  [2,0] (*+*) (*8*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*uniquSubIden*) (**)  , (*i2:*)(*1*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*uniquSubIden*) (**) )  
+ BST  FB  [5,0] (*1 gain*) (*10*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*topicName_input*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*subTopicName*) (**) )
+   NXB  OTE  [5,2] (*subscribeCmd*) (**)
+ BND
+
+EOR [8,0]
+
+
+(**)
+
+SOR  [0,13] (**) (**)  XIP  [1,0] (*unsubscribe*) (**)  FB  [2,0] (*+*) (*8*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*uniquSubIden*) (**)  , (*i2:*)(*1*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*uniquSubIden*) (**) )  
+ BST  FB  [5,0] (*1 gain*) (*10*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*topicName_input*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*subTopicName*) (**) )
+   NXB  OTE  [5,2] (*unsubscribeCmd*) (**)
+ BND
+
+EOR [8,0]
+
+
+(**)
+
+SOR  [0,17] (**) (**)  FB  [1,0] (*=*) (*9*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*socketSts*) (**)  , (*i2:*)(*9*) (**) ; (*o1:*)(**) (**) )  FB  [4,0] (*RA_MQTT_SUBSCRIBE*) (*MQTT_Subscribe_1*) ( (*FBEN:*)(**) (**)  , (*instance_In:*)(*MQTTinstance*) (**)  , (*subIdentifier_In:*)(*uniquSubIden*) (**)  , (*topicName_In:*)(*subTopicName*) (**)  , (*QOS_In:*)(*subQoS*) (**)  , (*subscribe_Cmd:*)(*subscribeCmd*) (**)  , (*unsubscribe_Cmd:*)(*unsubscribeCmd*) (**)  , (*respondData_In:*)(*resultData*) (**) ; (*FBENO:*)(**) (**)  , (*Sts_Done:*)(**) (**)  , (*Sts_Error:*)(**) (**) )
+EOR [7,0]
+
+
+(**)
+
+SOR  [0,26] (**) (**)  XIP  [1,0] (*publish*) (**)  
+ BST  
+ BST  FB  [2,0] (*1 gain*) (*11*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*pubTopic_In*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*pubTopic*) (**) )
+   NXB  FB  [2,2] (*1 gain*) (*11*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*pubData_In*) (**) ; (*ENO:ENO*)(**) (**)  , (*o1:*)(*pubData*) (**) )
+ BND
+
+   NXB  OTE  [2,4] (*publishCmd*) (**)
+ BND
+
+EOR [5,0]
+
+
+(**)
+
+SOR  [0,32] (**) (**)  FB  [1,0] (*=*) (*9*) ( (*EN:EN*)(**) (**)  , (*i1:*)(*socketSts*) (**)  , (*i2:*)(*9*) (**) ; (*o1:*)(**) (**) )  FB  [4,0] (*RA_MQTT_PUBLISH*) (*MQTT_Publish_1*) ( (*FBEN:*)(**) (**)  , (*instance_In:*)(*MQTTinstance*) (**)  , (*topicName_In:*)(*pubTopic*) (**)  , (*data_In:*)(*pubData*) (**)  , (*QoS_In:*)(*pubQoS*) (**)  , (*publish_Cmd:*)(*publishCmd*) (**)  , (*respondData_In:*)(*resultData*) (**) ; (*FBENO:*)(**) (**)  , (*Sts_Done:*)(**) (**)  , (*Sts_Error:*)(**) (**) )
+EOR [7,0]
+EOF
+#end_info
+#info= ID_MAX
+NextId=11
+#end_info
+END_PROGRAM]]></PouBody>
+  <PouUIProperties>
+    <Root Version="7">
+  <LanguageContainerStyle DisplayGrid="false" FunctionBlockInstanceName="true" VariableDisplayMode="NameAndAlias" VariableAlpha="255" VariableTextColor="windowtext" VariableOnlineTextColor="Red" VariableBackgroundColor="White" VariableGradientColor="White" Font="Microsoft Sans Serif, 8pt" CellWidth="50" CellHeight="25" NbCellsShapeWidth="4" NbCellsShapeHeight="2" CoilAllAligned="false" FitToWindowWidthEnabled="true" RungColor="WhiteSmoke" LabelColor="LightGoldenrodYellow" CommentColor="White" TextCommentColor="Green" PowerRailColor="Silver" DisplayBlockImage="true" DisplayComment="true" PenWidth="2" DisplayLabel="false" OperatorBlockBackgroundColor="buttonface" OperatorBlockGradientColor="buttonface" FunctionBackgroundColor="Ivory" FunctionGradientColor="Ivory" FunctionBlockBackgroundColor="Silver" FunctionBlockGradientColor="Silver" Index="0">
+    <ShapeStyle Type="ISaGRAF.Workbench.Mlge.LanguageContainer.LD.Shape.WbLdRungShape" Assembly="ISaGRAF.Workbench.Mlge.LanguageContainer.LD" PowerRailColor="Silver" DisplayLabel="false" RungColor="WhiteSmoke" CommentColor="White" LabelColor="LightGoldenrodYellow" DisplayComment="true" Key="[0,1]" Background="Transparent" BackgroundGradient="LightGreen" Font="Microsoft Sans Serif, 8pt" />
+    <ShapeStyle Type="ISaGRAF.Workbench.Mlge.LanguageContainer.LD.Shape.WbLdContactShape" Assembly="ISaGRAF.Workbench.Mlge.LanguageContainer.LD" FontColor="windowtext" DisplayMode="NameAndAlias" Key="[0,1],[1,1]" />
+    <ShapeStyle Type="ISaGRAF.Workbench.Mlge.Core.Shape.WbPouCallShape" Assembly="ISaGRAF.Workbench.Mlge.Core" FunctionBlockInstanceName="true" Alpha="255" Background="Silver" BackgroundGradient="Silver" Key="[0,1],[2,1]" />
+    <ShapeStyle Type="ISaGRAF.Workbench.Mlge.LanguageContainer.LD.Shape.WbLDVariableAccessShape" Assembly="ISaGRAF.Workbench.Mlge.LanguageContainer.LD" Alpha="255" Background="#FFFFFFFF" BackgroundGradient="#FFFFFFFF" FontColor="windowtext" DisplayMode="NameAndAlias" Key="[0,1],[2,1],[2,2],[2,2]" />
+    <ShapeStyle Type="ISaGRAF.Workbench.Mlge.LanguageContainer.LD.Shape.WbLDVariableAccessShape" Assembly="ISaGRAF.Workbench.Mlge.LanguageContainer.LD" Alpha="255" Background="#FFFFFFFF" BackgroundGradient="#FFFFFFFF" FontColor="windowtext" DisplayMode="NameAndAlias" Key="[0,1],[2,1],[2,3],[2,3]" />
+    <ShapeStyle Type="ISaGRAF.Workbench.Mlge.LanguageContainer.LD.Shape.WbLDVariableAccessShape" Assembly="ISaGRAF.Workbench.Mlge.LanguageContainer.LD" Alpha="255" Background="#FFFFFFFF" BackgroundGradient="#FFFFFFFF" FontColor="windowtext" DisplayMode="NameAndAlias" Key="[0,1],[2,1],[2,4],[2,4]" />
+    <ShapeStyle Type="ISaGRAF.Workbench.Mlge.LanguageContainer.LD.Shape.WbLDVariableAccessShape" Assembly="ISaGRAF.Workbench.Mlge.LanguageContainer.LD" Alpha="255" Background="#FFFFFFFF" BackgroundGradient="#FFFFFFFF" FontColor="windowtext" DisplayMode="NameAndAlias" Key="[0,1],[2,1],[2,5],[2,5]" />
+    <ShapeStyle Type="ISaGRAF.Workbench.Mlge.LanguageContainer.LD.Shape.WbLDVariableAccessShape" Assembly="ISaGRAF.Workbench.Mlge.LanguageContainer.LD" Alpha="255" Background="#FFFFFFFF" BackgroundGradient="#FFFFFFFF" FontColor="windowtext" DisplayMode="NameAndAlias" Key="[0,1],[2,1],[2,6],[2,6]" />
+    <ShapeStyle Type="ISaGRAF.Workbench.Mlge.LanguageContainer.LD.Shape.WbLDVariableAccessShape" Assembly="ISaGRAF.Workbench.Mlge.LanguageContainer.LD" Alpha="255" Background="#FFFFFFFF" BackgroundGradient="#FFFFFFFF" FontColor="windowtext" DisplayMode="NameAndAlias" Key="[0,1],[2,1],[2,7],[2,7]" />
+    <ShapeStyle Type="ISaGRAF.Workbench.Mlge.LanguageContainer.LD.Shape.WbLDVariableAccessShape" Assembly="ISaGRAF.Workbench.Mlge.LanguageContainer.LD" Alpha="255" Background="#FFFFFFFF" BackgroundGradient="#FFFFFFFF" FontColor="windowtext" DisplayMode="NameAndAlias" Key="[0,1],[2,1],[4,2],[4,2]" />
+    <ShapeStyle Type="ISaGRAF.Workbench.Mlge.LanguageContainer.LD.Shape.WbLDVariableAccessShape" Assembly="ISaGRAF.Workbench.Mlge.LanguageContainer.LD" Alpha="255" Background="#FFFFFFFF" BackgroundGradient="#FFFFFFFF" FontColor="windowtext" DisplayMode="NameAndAlias" Key="[0,1],[2,1],[4,3],[4,3]" />
+    <ShapeStyle Type="ISaGRAF.Workbench.Mlge.LanguageContainer.LD.Shape.WbLDVariableAccessShape" Assembly="ISaGRAF.Workbench.Mlge.LanguageContainer.LD" Alpha="255" Background="#FFFFFFFF" BackgroundGradient="#FFFFFFFF" FontColor="windowtext" DisplayMode="NameAndAlias" Key="[0,1],[2,1],[4,4],[4,4]" />
+    <ShapeStyle Type="ISaGRAF.Workbench.Mlge.LanguageContainer.LD.Shape.WbLDVariableAccessShape" Assembly="ISaGRAF.Workbench.Mlge.LanguageContainer.LD" Alpha="255" Background="#FFFFFFFF" BackgroundGradient="#FFFFFFFF" FontColor="windowtext" DisplayMode="NameAndAlias" Key="[0,1],[2,1],[4,5],[4,5]" />
+    <ShapeStyle Type="ISaGRAF.Workbench.Mlge.LanguageContainer.LD.Shape.WbLDVariableAccessShape" Assembly="ISaGRAF.Workbench.Mlge.LanguageContainer.LD" Alpha="255" Background="#FFFFFFFF" BackgroundGradient="#FFFFFFFF" FontColor="windowtext" DisplayMode="NameAndAlias" Key="[0,1],[2,1],[4,6],[4,6]" />
+    <ShapeStyle Type="ISaGRAF.Workbench.Mlge.LanguageContainer.LD.Shape.WbLDVariableAccessShape" Assembly="ISaGRAF.Workbench.Mlge.LanguageContainer.LD" Alpha="255" Background="#FFFFFFFF" BackgroundGradient="#FFFFFFFF" FontColor="windowtext" DisplayMode="NameAndAlias" Key="[0,1],[2,1],[4,7],[4,7]" />
+    <ShapeStyle Type="ISaGRAF.Workbench.Mlge.LanguageContainer.LD.Shape.WbLdRungShape" Assembly="ISaGRAF.Workbench.Mlge.LanguageContainer.LD" PowerRailColor="Silver" DisplayLabel="false" RungColor="WhiteSmoke" CommentColor="White" LabelColor="LightGoldenrodYellow" DisplayComment="true" Key="[0,13]" />
+    <ShapeStyle Type="ISaGRAF.Workbench.Mlge.LanguageContainer.LD.Shape.WbLdContactShape" Assembly="ISaGRAF.Workbench.Mlge.LanguageContainer.LD" FontColor="windowtext" DisplayMode="NameAndAlias" Key="[0,13],[1,13]" />
+    <ShapeStyle Type="ISaGRAF.Workbench.Mlge.Core.Shape.WbPouCallShape" Assembly="ISaGRAF.Workbench.Mlge.Core" FunctionBlockInstanceName="true" Key="[0,13],[2,13]" />
+    <ShapeStyle Type="ISaGRAF.Workbench.Mlge.LanguageContainer.LD.Shape.WbLDVariableAccessShape" Assembly="ISaGRAF.Workbench.Mlge.LanguageContainer.LD" Alpha="255" Background="#FFFFFFFF" BackgroundGradient="#FFFFFFFF" FontColor="windowtext" DisplayMode="NameAndAlias" Key="[0,13],[2,13],[2,14],[2,14]" />
+    <ShapeStyle Type="ISaGRAF.Workbench.Mlge.LanguageContainer.LD.Shape.WbLDVariableAccessShape" Assembly="ISaGRAF.Workbench.Mlge.LanguageContainer.LD" Alpha="255" Background="#FFFFFFFF" BackgroundGradient="#FFFFFFFF" FontColor="windowtext" DisplayMode="NameAndAlias" Key="[0,13],[2,13],[2,15],[2,15]" />
+    <ShapeStyle Type="ISaGRAF.Workbench.Mlge.LanguageContainer.LD.Shape.WbLDVariableAccessShape" Assembly="ISaGRAF.Workbench.Mlge.LanguageContainer.LD" Alpha="255" Background="#FFFFFFFF" BackgroundGradient="#FFFFFFFF" FontColor="windowtext" DisplayMode="NameAndAlias" Key="[0,13],[2,13],[4,14],[4,14]" />
+    <ShapeStyle Type="ISaGRAF.Workbench.Mlge.Core.Shape.WbPouCallShape" Assembly="ISaGRAF.Workbench.Mlge.Core" FunctionBlockInstanceName="true" Alpha="255" Background="buttonface" BackgroundGradient="buttonface" Key="[0,13],[5,13]" />
+    <ShapeStyle Type="ISaGRAF.Workbench.Mlge.LanguageContainer.LD.Shape.WbLDVariableAccessShape" Assembly="ISaGRAF.Workbench.Mlge.LanguageContainer.LD" Alpha="255" Background="#FFFFFFFF" BackgroundGradient="#FFFFFFFF" FontColor="windowtext" DisplayMode="NameAndAlias" Key="[0,13],[5,13],[5,14],[5,14]" />
+    <ShapeStyle Type="ISaGRAF.Workbench.Mlge.LanguageContainer.LD.Shape.WbLDVariableAccessShape" Assembly="ISaGRAF.Workbench.Mlge.LanguageContainer.LD" Alpha="255" Background="#FFFFFFFF" BackgroundGradient="#FFFFFFFF" FontColor="windowtext" DisplayMode="NameAndAlias" Key="[0,13],[5,13],[7,14],[7,14]" />
+    <ShapeStyle Type="ISaGRAF.Workbench.Mlge.LanguageContainer.LD.Shape.WbLdCoilShape" Assembly="ISaGRAF.Workbench.Mlge.LanguageContainer.LD" FontColor="windowtext" DisplayMode="NameAndAlias" Key="[0,13],[5,15]" />
+    <ShapeStyle Type="ISaGRAF.Workbench.Mlge.LanguageContainer.LD.Shape.WbLdRungShape" Assembly="ISaGRAF.Workbench.Mlge.LanguageContainer.LD" PowerRailColor="Silver" DisplayLabel="false" RungColor="WhiteSmoke" CommentColor="White" LabelColor="LightGoldenrodYellow" DisplayComment="true" Key="[0,17]" />
+    <ShapeStyle Type="ISaGRAF.Workbench.Mlge.Core.Shape.WbPouCallShape" Assembly="ISaGRAF.Workbench.Mlge.Core" FunctionBlockInstanceName="true" Alpha="255" Background="buttonface" BackgroundGradient="buttonface" Key="[0,17],[1,17]" />
+    <ShapeStyle Type="ISaGRAF.Workbench.Mlge.LanguageContainer.LD.Shape.WbLDVariableAccessShape" Assembly="ISaGRAF.Workbench.Mlge.LanguageContainer.LD" Alpha="255" Background="#FFFFFFFF" BackgroundGradient="#FFFFFFFF" FontColor="windowtext" DisplayMode="NameAndAlias" Key="[0,17],[1,17],[1,18],[1,18]" />
+    <ShapeStyle Type="ISaGRAF.Workbench.Mlge.LanguageContainer.LD.Shape.WbLDVariableAccessShape" Assembly="ISaGRAF.Workbench.Mlge.LanguageContainer.LD" Alpha="255" Background="#FFFFFFFF" BackgroundGradient="#FFFFFFFF" FontColor="windowtext" DisplayMode="NameAndAlias" Key="[0,17],[1,17],[1,19],[1,19]" />
+    <ShapeStyle Type="ISaGRAF.Workbench.Mlge.Core.Shape.WbPouCallShape" Assembly="ISaGRAF.Workbench.Mlge.Core" FunctionBlockInstanceName="true" Alpha="255" Background="Silver" BackgroundGradient="Silver" Key="[0,17],[4,17]" />
+    <ShapeStyle Type="ISaGRAF.Workbench.Mlge.LanguageContainer.LD.Shape.WbLDVariableAccessShape" Assembly="ISaGRAF.Workbench.Mlge.LanguageContainer.LD" Alpha="255" Background="#FFFFFFFF" BackgroundGradient="#FFFFFFFF" FontColor="windowtext" DisplayMode="NameAndAlias" Key="[0,17],[4,17],[4,18],[4,18]" />
+    <ShapeStyle Type="ISaGRAF.Workbench.Mlge.LanguageContainer.LD.Shape.WbLDVariableAccessShape" Assembly="ISaGRAF.Workbench.Mlge.LanguageContainer.LD" Alpha="255" Background="#FFFFFFFF" BackgroundGradient="#FFFFFFFF" FontColor="windowtext" DisplayMode="NameAndAlias" Key="[0,17],[4,17],[4,19],[4,19]" />
+    <ShapeStyle Type="ISaGRAF.Workbench.Mlge.LanguageContainer.LD.Shape.WbLDVariableAccessShape" Assembly="ISaGRAF.Workbench.Mlge.LanguageContainer.LD" Alpha="255" Background="#FFFFFFFF" BackgroundGradient="#FFFFFFFF" FontColor="windowtext" DisplayMode="NameAndAlias" Key="[0,17],[4,17],[4,20],[4,20]" />
+    <ShapeStyle Type="ISaGRAF.Workbench.Mlge.LanguageContainer.LD.Shape.WbLDVariableAccessShape" Assembly="ISaGRAF.Workbench.Mlge.LanguageContainer.LD" Alpha="255" Background="#FFFFFFFF" BackgroundGradient="#FFFFFFFF" FontColor="windowtext" DisplayMode="NameAndAlias" Key="[0,17],[4,17],[4,21],[4,21]" />
+    <ShapeStyle Type="ISaGRAF.Workbench.Mlge.LanguageContainer.LD.Shape.WbLDVariableAccessShape" Assembly="ISaGRAF.Workbench.Mlge.LanguageContainer.LD" Alpha="255" Background="#FFFFFFFF" BackgroundGradient="#FFFFFFFF" FontColor="windowtext" DisplayMode="NameAndAlias" Key="[0,17],[4,17],[4,22],[4,22]" />
+    <ShapeStyle Type="ISaGRAF.Workbench.Mlge.LanguageContainer.LD.Shape.WbLDVariableAccessShape" Assembly="ISaGRAF.Workbench.Mlge.LanguageContainer.LD" Alpha="255" Background="#FFFFFFFF" BackgroundGradient="#FFFFFFFF" FontColor="windowtext" DisplayMode="NameAndAlias" Key="[0,17],[4,17],[4,23],[4,23]" />
+    <ShapeStyle Type="ISaGRAF.Workbench.Mlge.LanguageContainer.LD.Shape.WbLDVariableAccessShape" Assembly="ISaGRAF.Workbench.Mlge.LanguageContainer.LD" Alpha="255" Background="#FFFFFFFF" BackgroundGradient="#FFFFFFFF" FontColor="windowtext" DisplayMode="NameAndAlias" Key="[0,17],[4,17],[4,24],[4,24]" />
+    <ShapeStyle Type="ISaGRAF.Workbench.Mlge.LanguageContainer.LD.Shape.WbLDVariableAccessShape" Assembly="ISaGRAF.Workbench.Mlge.LanguageContainer.LD" Alpha="255" Background="#FFFFFFFF" BackgroundGradient="#FFFFFFFF" FontColor="windowtext" DisplayMode="NameAndAlias" Key="[0,17],[4,17],[6,18],[6,18]" />
+    <ShapeStyle Type="ISaGRAF.Workbench.Mlge.LanguageContainer.LD.Shape.WbLDVariableAccessShape" Assembly="ISaGRAF.Workbench.Mlge.LanguageContainer.LD" Alpha="255" Background="#FFFFFFFF" BackgroundGradient="#FFFFFFFF" FontColor="windowtext" DisplayMode="NameAndAlias" Key="[0,17],[4,17],[6,19],[6,19]" />
+    <ShapeStyle Type="ISaGRAF.Workbench.Mlge.LanguageContainer.LD.Shape.WbLdRungShape" Assembly="ISaGRAF.Workbench.Mlge.LanguageContainer.LD" PowerRailColor="Silver" DisplayLabel="false" RungColor="WhiteSmoke" CommentColor="White" LabelColor="LightGoldenrodYellow" DisplayComment="true" Key="[0,26]" />
+    <ShapeStyle Type="ISaGRAF.Workbench.Mlge.LanguageContainer.LD.Shape.WbLdContactShape" Assembly="ISaGRAF.Workbench.Mlge.LanguageContainer.LD" FontColor="windowtext" DisplayMode="NameAndAlias" Key="[0,26],[1,26]" />
+    <ShapeStyle Type="ISaGRAF.Workbench.Mlge.Core.Shape.WbPouCallShape" Assembly="ISaGRAF.Workbench.Mlge.Core" FunctionBlockInstanceName="true" Key="[0,26],[2,26]" />
+    <ShapeStyle Type="ISaGRAF.Workbench.Mlge.LanguageContainer.LD.Shape.WbLDVariableAccessShape" Assembly="ISaGRAF.Workbench.Mlge.LanguageContainer.LD" Alpha="255" Background="#FFFFFFFF" BackgroundGradient="#FFFFFFFF" FontColor="windowtext" DisplayMode="NameAndAlias" Key="[0,26],[2,26],[2,27],[2,27]" />
+    <ShapeStyle Type="ISaGRAF.Workbench.Mlge.LanguageContainer.LD.Shape.WbLDVariableAccessShape" Assembly="ISaGRAF.Workbench.Mlge.LanguageContainer.LD" Alpha="255" Background="#FFFFFFFF" BackgroundGradient="#FFFFFFFF" FontColor="windowtext" DisplayMode="NameAndAlias" Key="[0,26],[2,26],[4,27],[4,27]" />
+    <ShapeStyle Type="ISaGRAF.Workbench.Mlge.Core.Shape.WbPouCallShape" Assembly="ISaGRAF.Workbench.Mlge.Core" FunctionBlockInstanceName="true" Key="[0,26],[2,28]" />
+    <ShapeStyle Type="ISaGRAF.Workbench.Mlge.LanguageContainer.LD.Shape.WbLDVariableAccessShape" Assembly="ISaGRAF.Workbench.Mlge.LanguageContainer.LD" Alpha="255" Background="#FFFFFFFF" BackgroundGradient="#FFFFFFFF" FontColor="windowtext" DisplayMode="NameAndAlias" Key="[0,26],[2,28],[2,29],[2,29]" />
+    <ShapeStyle Type="ISaGRAF.Workbench.Mlge.LanguageContainer.LD.Shape.WbLDVariableAccessShape" Assembly="ISaGRAF.Workbench.Mlge.LanguageContainer.LD" Alpha="255" Background="#FFFFFFFF" BackgroundGradient="#FFFFFFFF" FontColor="windowtext" DisplayMode="NameAndAlias" Key="[0,26],[2,28],[4,29],[4,29]" />
+    <ShapeStyle Type="ISaGRAF.Workbench.Mlge.LanguageContainer.LD.Shape.WbLdCoilShape" Assembly="ISaGRAF.Workbench.Mlge.LanguageContainer.LD" FontColor="windowtext" DisplayMode="NameAndAlias" Key="[0,26],[2,30]" />
+    <ShapeStyle Type="ISaGRAF.Workbench.Mlge.LanguageContainer.LD.Shape.WbLdRungShape" Assembly="ISaGRAF.Workbench.Mlge.LanguageContainer.LD" PowerRailColor="Silver" DisplayLabel="false" RungColor="WhiteSmoke" CommentColor="White" LabelColor="LightGoldenrodYellow" DisplayComment="true" Key="[0,32]" />
+    <ShapeStyle Type="ISaGRAF.Workbench.Mlge.Core.Shape.WbPouCallShape" Assembly="ISaGRAF.Workbench.Mlge.Core" FunctionBlockInstanceName="true" Alpha="255" Background="buttonface" BackgroundGradient="buttonface" Key="[0,32],[1,32]" />
+    <ShapeStyle Type="ISaGRAF.Workbench.Mlge.LanguageContainer.LD.Shape.WbLDVariableAccessShape" Assembly="ISaGRAF.Workbench.Mlge.LanguageContainer.LD" Alpha="255" Background="#FFFFFFFF" BackgroundGradient="#FFFFFFFF" FontColor="windowtext" DisplayMode="NameAndAlias" Key="[0,32],[1,32],[1,33],[1,33]" />
+    <ShapeStyle Type="ISaGRAF.Workbench.Mlge.LanguageContainer.LD.Shape.WbLDVariableAccessShape" Assembly="ISaGRAF.Workbench.Mlge.LanguageContainer.LD" Alpha="255" Background="#FFFFFFFF" BackgroundGradient="#FFFFFFFF" FontColor="windowtext" DisplayMode="NameAndAlias" Key="[0,32],[1,32],[1,34],[1,34]" />
+    <ShapeStyle Type="ISaGRAF.Workbench.Mlge.Core.Shape.WbPouCallShape" Assembly="ISaGRAF.Workbench.Mlge.Core" FunctionBlockInstanceName="true" Alpha="255" Background="Silver" BackgroundGradient="Silver" Key="[0,32],[4,32]" />
+    <ShapeStyle Type="ISaGRAF.Workbench.Mlge.LanguageContainer.LD.Shape.WbLDVariableAccessShape" Assembly="ISaGRAF.Workbench.Mlge.LanguageContainer.LD" Alpha="255" Background="#FFFFFFFF" BackgroundGradient="#FFFFFFFF" FontColor="windowtext" DisplayMode="NameAndAlias" Key="[0,32],[4,32],[4,33],[4,33]" />
+    <ShapeStyle Type="ISaGRAF.Workbench.Mlge.LanguageContainer.LD.Shape.WbLDVariableAccessShape" Assembly="ISaGRAF.Workbench.Mlge.LanguageContainer.LD" Alpha="255" Background="#FFFFFFFF" BackgroundGradient="#FFFFFFFF" FontColor="windowtext" DisplayMode="NameAndAlias" Key="[0,32],[4,32],[4,34],[4,34]" />
+    <ShapeStyle Type="ISaGRAF.Workbench.Mlge.LanguageContainer.LD.Shape.WbLDVariableAccessShape" Assembly="ISaGRAF.Workbench.Mlge.LanguageContainer.LD" Alpha="255" Background="#FFFFFFFF" BackgroundGradient="#FFFFFFFF" FontColor="windowtext" DisplayMode="NameAndAlias" Key="[0,32],[4,32],[4,35],[4,35]" />
+    <ShapeStyle Type="ISaGRAF.Workbench.Mlge.LanguageContainer.LD.Shape.WbLDVariableAccessShape" Assembly="ISaGRAF.Workbench.Mlge.LanguageContainer.LD" Alpha="255" Background="#FFFFFFFF" BackgroundGradient="#FFFFFFFF" FontColor="windowtext" DisplayMode="NameAndAlias" Key="[0,32],[4,32],[4,36],[4,36]" />
+    <ShapeStyle Type="ISaGRAF.Workbench.Mlge.LanguageContainer.LD.Shape.WbLDVariableAccessShape" Assembly="ISaGRAF.Workbench.Mlge.LanguageContainer.LD" Alpha="255" Background="#FFFFFFFF" BackgroundGradient="#FFFFFFFF" FontColor="windowtext" DisplayMode="NameAndAlias" Key="[0,32],[4,32],[4,37],[4,37]" />
+    <ShapeStyle Type="ISaGRAF.Workbench.Mlge.LanguageContainer.LD.Shape.WbLDVariableAccessShape" Assembly="ISaGRAF.Workbench.Mlge.LanguageContainer.LD" Alpha="255" Background="#FFFFFFFF" BackgroundGradient="#FFFFFFFF" FontColor="windowtext" DisplayMode="NameAndAlias" Key="[0,32],[4,32],[4,38],[4,38]" />
+    <ShapeStyle Type="ISaGRAF.Workbench.Mlge.LanguageContainer.LD.Shape.WbLDVariableAccessShape" Assembly="ISaGRAF.Workbench.Mlge.LanguageContainer.LD" Alpha="255" Background="#FFFFFFFF" BackgroundGradient="#FFFFFFFF" FontColor="windowtext" DisplayMode="NameAndAlias" Key="[0,32],[4,32],[6,33],[6,33]" />
+    <ShapeStyle Type="ISaGRAF.Workbench.Mlge.LanguageContainer.LD.Shape.WbLDVariableAccessShape" Assembly="ISaGRAF.Workbench.Mlge.LanguageContainer.LD" Alpha="255" Background="#FFFFFFFF" BackgroundGradient="#FFFFFFFF" FontColor="windowtext" DisplayMode="NameAndAlias" Key="[0,32],[4,32],[6,34],[6,34]" />
+    <ShapeStyle Type="ISaGRAF.Workbench.Mlge.LanguageContainer.LD.Shape.WbLdRungShape" Assembly="ISaGRAF.Workbench.Mlge.LanguageContainer.LD" PowerRailColor="Silver" DisplayLabel="false" RungColor="WhiteSmoke" CommentColor="White" LabelColor="LightGoldenrodYellow" DisplayComment="true" Key="[0,9]" />
+    <ShapeStyle Type="ISaGRAF.Workbench.Mlge.LanguageContainer.LD.Shape.WbLdContactShape" Assembly="ISaGRAF.Workbench.Mlge.LanguageContainer.LD" FontColor="windowtext" DisplayMode="NameAndAlias" Key="[0,9],[1,9]" />
+    <ShapeStyle Type="ISaGRAF.Workbench.Mlge.Core.Shape.WbPouCallShape" Assembly="ISaGRAF.Workbench.Mlge.Core" FunctionBlockInstanceName="true" Key="[0,9],[2,9]" />
+    <ShapeStyle Type="ISaGRAF.Workbench.Mlge.LanguageContainer.LD.Shape.WbLDVariableAccessShape" Assembly="ISaGRAF.Workbench.Mlge.LanguageContainer.LD" Alpha="255" Background="#FFFFFFFF" BackgroundGradient="#FFFFFFFF" FontColor="windowtext" DisplayMode="NameAndAlias" Key="[0,9],[2,9],[2,10],[2,10]" />
+    <ShapeStyle Type="ISaGRAF.Workbench.Mlge.LanguageContainer.LD.Shape.WbLDVariableAccessShape" Assembly="ISaGRAF.Workbench.Mlge.LanguageContainer.LD" Alpha="255" Background="#FFFFFFFF" BackgroundGradient="#FFFFFFFF" FontColor="windowtext" DisplayMode="NameAndAlias" Key="[0,9],[2,9],[2,11],[2,11]" />
+    <ShapeStyle Type="ISaGRAF.Workbench.Mlge.LanguageContainer.LD.Shape.WbLDVariableAccessShape" Assembly="ISaGRAF.Workbench.Mlge.LanguageContainer.LD" Alpha="255" Background="#FFFFFFFF" BackgroundGradient="#FFFFFFFF" FontColor="windowtext" DisplayMode="NameAndAlias" Key="[0,9],[2,9],[4,10],[4,10]" />
+    <ShapeStyle Type="ISaGRAF.Workbench.Mlge.LanguageContainer.LD.Shape.WbLdCoilShape" Assembly="ISaGRAF.Workbench.Mlge.LanguageContainer.LD" FontColor="windowtext" DisplayMode="NameAndAlias" Key="[0,9],[5,11]" />
+    <ShapeStyle Type="ISaGRAF.Workbench.Mlge.Core.Shape.WbPouCallShape" Assembly="ISaGRAF.Workbench.Mlge.Core" FunctionBlockInstanceName="true" Alpha="255" Background="buttonface" BackgroundGradient="buttonface" Key="[0,9],[5,9]" />
+    <ShapeStyle Type="ISaGRAF.Workbench.Mlge.LanguageContainer.LD.Shape.WbLDVariableAccessShape" Assembly="ISaGRAF.Workbench.Mlge.LanguageContainer.LD" Alpha="255" Background="#FFFFFFFF" BackgroundGradient="#FFFFFFFF" FontColor="windowtext" DisplayMode="NameAndAlias" Key="[0,9],[5,9],[5,10],[5,10]" />
+    <ShapeStyle Type="ISaGRAF.Workbench.Mlge.LanguageContainer.LD.Shape.WbLDVariableAccessShape" Assembly="ISaGRAF.Workbench.Mlge.LanguageContainer.LD" Alpha="255" Background="#FFFFFFFF" BackgroundGradient="#FFFFFFFF" FontColor="windowtext" DisplayMode="NameAndAlias" Key="[0,9],[5,9],[7,10],[7,10]" />
+  </LanguageContainerStyle>
+</Root>
+  </PouUIProperties>
+</Pou>

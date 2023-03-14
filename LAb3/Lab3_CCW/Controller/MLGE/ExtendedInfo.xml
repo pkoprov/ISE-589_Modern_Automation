@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ProjectElements>
+  <AcfElementGuid Guid="13716769-6cda-499d-ba1e-2616ecd0bac0">
+    <File>HeartBeat.AcfMlge</File>
+  </AcfElementGuid>
+  <AcfElementGuid Guid="1bfb3c9d-0b0d-4310-bc2f-218e9f13d275">
+    <File>RA_MQTT_SUBSCRIBE.AcfMlge</File>
+  </AcfElementGuid>
+  <AcfElementGuid Guid="20874288-9c31-4bdf-85eb-045163f6727f">
+    <File>RA_MQTT_PUBLISH.AcfMlge</File>
+  </AcfElementGuid>
+  <AcfElementGuid Guid="5314fd7f-d351-45f4-98bc-27e5afaa23c8">
+    <File>RA_MQTT_CONNECT.AcfMlge</File>
+  </AcfElementGuid>
+  <AcfElementGuid Guid="5fe772c0-1eba-4953-9de2-8c6e9b911e5e">
+    <File>Motor_control.AcfMlge</File>
+  </AcfElementGuid>
+  <AcfElementGuid Guid="ca7ba770-0234-4625-b4e9-749ee223dfd7">
+    <File>MQTT_Client.AcfMlge</File>
+  </AcfElementGuid>
+</ProjectElements>

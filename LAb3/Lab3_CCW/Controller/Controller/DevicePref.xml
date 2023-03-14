@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DevicePreferences xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Micro800ConnectionPath>REDCOLLECTOR21!AB_ETHIP-1\10.76.152.221</Micro800ConnectionPath>
+  <RSLCPath>REDCOLLECTOR21!AB_ETHIP-1\10.76.152.221</RSLCPath>
+  <FTLPath>WINDOWS10-RA-EV!AB_ETH-1\192.168.1.101</FTLPath>
+</DevicePreferences>

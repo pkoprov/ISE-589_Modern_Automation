@@ -1,0 +1,197 @@
+(****** QuickLD compiler *******************************)
+(****** Copyright Rockwell Automation Canada, Ltd ******)
+(****** ST *********************************************)
+
+(*************** Rung **********************************)
+(**)
+__STEPPRAGMA
+0,1
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+
+(*************** Code for the end of Rung **************)
+__GL __LG0001 ;
+
+
+(*************** Rung **********************************)
+(**)
+__STEPPRAGMA
+0,2
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+(* FB call: RA_MQTT_CONNECT *)
+MQTT_Connect_1(NOT(_IO_EM_DI_00) AND NOT(RESETMQTT), LOCSERVER, CLIENTNAME, CONNECTCMD, DISCONNECTCMD, USERID, USERPASS) ;
+SOCKETSTS := MQTT_Connect_1.connection_Sts ;
+MQTTINSTANCE := MQTT_Connect_1.Instance_Out ;
+TOPICNAME := MQTT_Connect_1.topicName_Out ;
+TOPICDATA := MQTT_Connect_1.topicData_Out ;
+DATAPOINTER := MQTT_Connect_1.sbscrbData_Index ;
+RESULTDATA := MQTT_Connect_1.resultData_Out ;
+
+(*************** Code for the end of Rung **************)
+__GL __LG0002 ;
+
+
+(*************** Rung **********************************)
+(**)
+__STEPPRAGMA
+0,10
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+; (*Pulse detection on : SUBSCRIBE with __MEMO__1__SUBSCRIBE *)
+__EDTB1 := (SUBSCRIBE AND NOT(__MEMO__1__SUBSCRIBE)) ;
+IF __EDTB1 THEN
+UNIQUSUBIDEN := (UNIQUSUBIDEN + 1) ;
+END_IF ;
+__MO_PLUS_1 := __EDTB1 ;
+__EDTB2 := __EDTB1 ;
+IF __EDTB2 THEN
+SUBTOPICNAME := (  TOPICNAME_INPUT) ;
+END_IF ;
+__MO_1GAIN_1 := __EDTB2 ;
+__EDTB3 := __EDTB2 ;
+SUBSCRIBECMD := __EDTB1 ;
+
+(*************** Code for the end of Rung **************)
+__GL __LG0003 ;
+__MEMO__1__SUBSCRIBE := SUBSCRIBE ; (*Pulse detection on : SUBSCRIBE with __MEMO__1__SUBSCRIBE *)
+
+
+(*************** Rung **********************************)
+(**)
+__STEPPRAGMA
+0,14
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+; (*Pulse detection on : UNSUBSCRIBE with __MEMO__2__UNSUBSCRIBE *)
+__EDTB4 := (UNSUBSCRIBE AND NOT(__MEMO__2__UNSUBSCRIBE)) ;
+IF __EDTB4 THEN
+UNIQUSUBIDEN := (UNIQUSUBIDEN + 1) ;
+END_IF ;
+__MO_PLUS_2 := __EDTB4 ;
+__EDTB5 := __EDTB4 ;
+IF __EDTB5 THEN
+SUBTOPICNAME := (  TOPICNAME_INPUT) ;
+END_IF ;
+__MO_1GAIN_2 := __EDTB5 ;
+__EDTB6 := __EDTB5 ;
+UNSUBSCRIBECMD := __EDTB4 ;
+
+(*************** Code for the end of Rung **************)
+__GL __LG0004 ;
+__MEMO__2__UNSUBSCRIBE := UNSUBSCRIBE ; (*Pulse detection on : UNSUBSCRIBE with __MEMO__2__UNSUBSCRIBE *)
+
+
+(*************** Rung **********************************)
+(**)
+__STEPPRAGMA
+0,18
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+__EDTB8 := TRUE ;
+IF __EDTB8 THEN
+(* Operator output on : = with __EDTB7 *)
+__EDTB7 := (SOCKETSTS = 9) ;
+ELSE
+__EDTB7 := FALSE ;
+END_IF ;
+__MO_EQUAL_1 := __EDTB7 ;
+(* FB call: RA_MQTT_SUBSCRIBE *)
+MQTT_Subscribe_1(__EDTB7, MQTTINSTANCE, UNIQUSUBIDEN, SUBTOPICNAME, SUBQOS, SUBSCRIBECMD, UNSUBSCRIBECMD, RESULTDATA) ;
+
+(*************** Code for the end of Rung **************)
+__GL __LG0005 ;
+
+
+(*************** Rung **********************************)
+(**)
+__STEPPRAGMA
+0,27
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+; (*Pulse detection on : PUBLISH with __MEMO__3__PUBLISH *)
+__EDTB9 := NOT(_IO_EM_DI_00) AND (PUBLISH AND NOT(__MEMO__3__PUBLISH)) ;
+__EDTB10 := __EDTB9 ;
+IF __EDTB10 THEN
+PUBTOPIC := (  PUBTOPIC_IN) ;
+END_IF ;
+__MO_1GAIN_3 := __EDTB10 ;
+__EDTB11 := __EDTB10 ;
+__EDTB12 := __EDTB9 ;
+IF __EDTB12 THEN
+PUBDATA := (  PUBDATA_IN) ;
+END_IF ;
+__MO_1GAIN_4 := __EDTB12 ;
+__EDTB13 := __EDTB12 ;
+__EDTB14 := (__EDTB11 OR __EDTB13) ;
+PUBLISHCMD := __EDTB9 ;
+
+(*************** Code for the end of Rung **************)
+__GL __LG0006 ;
+__MEMO__3__PUBLISH := PUBLISH ; (*Pulse detection on : PUBLISH with __MEMO__3__PUBLISH *)
+
+
+(*************** Rung **********************************)
+(**)
+__STEPPRAGMA
+0,33
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+__EDTB16 := TRUE ;
+IF __EDTB16 THEN
+(* Operator output on : = with __EDTB15 *)
+__EDTB15 := (SOCKETSTS = 9) ;
+ELSE
+__EDTB15 := FALSE ;
+END_IF ;
+__MO_EQUAL_2 := __EDTB15 ;
+(* FB call: RA_MQTT_PUBLISH *)
+MQTT_Publish_1(__EDTB15, MQTTINSTANCE, PUBTOPIC, PUBDATA, PUBQOS, PUBLISHCMD, RESULTDATA) ;
+
+(*************** Code for the end of Rung **************)
+__GL __LG0007 ;
+
+
+(*************** Rung **********************************)
+(**)
+__STEPPRAGMA
+0,41
+__ENDSTEPPRAGMA
+(*Label :*)(**)
+__EDTB17 := TRUE ;
+IF __EDTB17 THEN
+SEQ := (  DATAPOINTER) ;
+END_IF ;
+__MO_1GAIN_5 := __EDTB17 ;
+
+(*************** Code for the end of Rung **************)
+__GL __LG0008 ;
+
+
+(*************** Code for the end of File **************)
+__GL __LG0000 ;
+
+
+
+(*************** Local Symbols table *******************)
+(* __MEMO__1__SUBSCRIBE *)
+(* __EDTB1 *)
+(* __EDTB2 *)
+(* __EDTB3 *)
+(* __MEMO__2__UNSUBSCRIBE *)
+(* __EDTB4 *)
+(* __EDTB5 *)
+(* __EDTB6 *)
+(* __EDTB7 *)
+(* __EDTB8 *)
+(* __MEMO__3__PUBLISH *)
+(* __EDTB9 *)
+(* __EDTB10 *)
+(* __EDTB11 *)
+(* __EDTB12 *)
+(* __EDTB13 *)
+(* __EDTB14 *)
+(* __EDTB15 *)
+(* __EDTB16 *)
+(* __EDTB17 *)
+
