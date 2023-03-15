@@ -8,19 +8,8 @@ __STEPPRAGMA
 0,1
 __ENDSTEPPRAGMA
 (*Label :*)(**)
-
-(*************** Code for the end of Rung **************)
-__GL __LG0001 ;
-
-
-(*************** Rung **********************************)
-(**)
-__STEPPRAGMA
-0,2
-__ENDSTEPPRAGMA
-(*Label :*)(**)
 (* FB call: RA_MQTT_CONNECT *)
-MQTT_Connect_1(NOT(_IO_EM_DI_00) AND NOT(RESETMQTT), LOCSERVER, CLIENTNAME, CONNECTCMD, DISCONNECTCMD, USERID, USERPASS) ;
+MQTT_Connect_1(NOT(RESETMQTT), LOCSERVER, CLIENTNAME, CONNECTCMD, DISCONNECTCMD, USERID, USERPASS) ;
 SOCKETSTS := MQTT_Connect_1.connection_Sts ;
 MQTTINSTANCE := MQTT_Connect_1.Instance_Out ;
 TOPICNAME := MQTT_Connect_1.topicName_Out ;
@@ -29,13 +18,13 @@ DATAPOINTER := MQTT_Connect_1.sbscrbData_Index ;
 RESULTDATA := MQTT_Connect_1.resultData_Out ;
 
 (*************** Code for the end of Rung **************)
-__GL __LG0002 ;
+__GL __LG0001 ;
 
 
 (*************** Rung **********************************)
 (**)
 __STEPPRAGMA
-0,10
+0,9
 __ENDSTEPPRAGMA
 (*Label :*)(**)
 ; (*Pulse detection on : SUBSCRIBE with __MEMO__1__SUBSCRIBE *)
@@ -53,14 +42,14 @@ __EDTB3 := __EDTB2 ;
 SUBSCRIBECMD := __EDTB1 ;
 
 (*************** Code for the end of Rung **************)
-__GL __LG0003 ;
+__GL __LG0002 ;
 __MEMO__1__SUBSCRIBE := SUBSCRIBE ; (*Pulse detection on : SUBSCRIBE with __MEMO__1__SUBSCRIBE *)
 
 
 (*************** Rung **********************************)
 (**)
 __STEPPRAGMA
-0,14
+0,13
 __ENDSTEPPRAGMA
 (*Label :*)(**)
 ; (*Pulse detection on : UNSUBSCRIBE with __MEMO__2__UNSUBSCRIBE *)
@@ -78,14 +67,14 @@ __EDTB6 := __EDTB5 ;
 UNSUBSCRIBECMD := __EDTB4 ;
 
 (*************** Code for the end of Rung **************)
-__GL __LG0004 ;
+__GL __LG0003 ;
 __MEMO__2__UNSUBSCRIBE := UNSUBSCRIBE ; (*Pulse detection on : UNSUBSCRIBE with __MEMO__2__UNSUBSCRIBE *)
 
 
 (*************** Rung **********************************)
 (**)
 __STEPPRAGMA
-0,18
+0,17
 __ENDSTEPPRAGMA
 (*Label :*)(**)
 __EDTB8 := TRUE ;
@@ -100,17 +89,17 @@ __MO_EQUAL_1 := __EDTB7 ;
 MQTT_Subscribe_1(__EDTB7, MQTTINSTANCE, UNIQUSUBIDEN, SUBTOPICNAME, SUBQOS, SUBSCRIBECMD, UNSUBSCRIBECMD, RESULTDATA) ;
 
 (*************** Code for the end of Rung **************)
-__GL __LG0005 ;
+__GL __LG0004 ;
 
 
 (*************** Rung **********************************)
 (**)
 __STEPPRAGMA
-0,27
+0,26
 __ENDSTEPPRAGMA
 (*Label :*)(**)
 ; (*Pulse detection on : PUBLISH with __MEMO__3__PUBLISH *)
-__EDTB9 := NOT(_IO_EM_DI_00) AND (PUBLISH AND NOT(__MEMO__3__PUBLISH)) ;
+__EDTB9 := NOT(RESETMQTT) AND (PUBLISH AND NOT(__MEMO__3__PUBLISH)) ;
 __EDTB10 := __EDTB9 ;
 IF __EDTB10 THEN
 PUBTOPIC := (  PUBTOPIC_IN) ;
@@ -127,14 +116,14 @@ __EDTB14 := (__EDTB11 OR __EDTB13) ;
 PUBLISHCMD := __EDTB9 ;
 
 (*************** Code for the end of Rung **************)
-__GL __LG0006 ;
+__GL __LG0005 ;
 __MEMO__3__PUBLISH := PUBLISH ; (*Pulse detection on : PUBLISH with __MEMO__3__PUBLISH *)
 
 
 (*************** Rung **********************************)
 (**)
 __STEPPRAGMA
-0,33
+0,32
 __ENDSTEPPRAGMA
 (*Label :*)(**)
 __EDTB16 := TRUE ;
@@ -149,13 +138,13 @@ __MO_EQUAL_2 := __EDTB15 ;
 MQTT_Publish_1(__EDTB15, MQTTINSTANCE, PUBTOPIC, PUBDATA, PUBQOS, PUBLISHCMD, RESULTDATA) ;
 
 (*************** Code for the end of Rung **************)
-__GL __LG0007 ;
+__GL __LG0006 ;
 
 
 (*************** Rung **********************************)
 (**)
 __STEPPRAGMA
-0,41
+0,40
 __ENDSTEPPRAGMA
 (*Label :*)(**)
 __EDTB17 := TRUE ;
@@ -165,7 +154,7 @@ END_IF ;
 __MO_1GAIN_5 := __EDTB17 ;
 
 (*************** Code for the end of Rung **************)
-__GL __LG0008 ;
+__GL __LG0007 ;
 
 
 (*************** Code for the end of File **************)

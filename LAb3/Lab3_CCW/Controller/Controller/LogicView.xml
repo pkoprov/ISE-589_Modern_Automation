@@ -16,5 +16,10 @@
       <RoutingName>HeartBeat</RoutingName>
       <SubRoutings />
     </ProgramItem>
+    <ProgramItem>
+      <ProgramName>Program1_New</ProgramName>
+      <RoutingName>MQTT_Client_control</RoutingName>
+      <SubRoutings />
+    </ProgramItem>
   </ProgramItems>
 </ProgramItemsData>
