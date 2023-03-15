@@ -10,19 +10,24 @@ ELSE
 END_IF;
 
 // if the current topic is 'ISE589/BBK/Lab3/Motor_state', set the corresponding digital output based on the current data value
-IF currentTopic = 'ISE589/BBK/Lab3/Motor/State' THEN
-    IF currentData = TRUE and _IO_EM_DI_00 = FALSE  THEN 
-        _IO_EM_DO_00 := TRUE;
-    ELSE
-        _IO_EM_DO_00 := FALSE;
-    END_IF;
-// if the current topic is 'ISE589/BBK/Lab3/Motor_dir', set the corresponding digital output based on the current data value
-ELSIF currentTopic = 'ISE589/BBK/Lab3/Motor/Direction' THEN
-    IF currentData = TRUE THEN 
-        _IO_EM_DO_01 := TRUE;
-    ELSE
-        _IO_EM_DO_01 := FALSE;
-    END_IF;
+IF resetMQTT = FALSE THEN
+	IF currentTopic = 'ISE589/BBK/Lab3/Motor/State' THEN
+	    IF currentData = TRUE THEN 
+	        _IO_EM_DO_00 := TRUE;
+	    ELSE
+	        _IO_EM_DO_00 := FALSE;
+	    END_IF;
+	// if the current topic is 'ISE589/BBK/Lab3/Motor_dir', set the corresponding digital output based on the current data value
+	ELSIF currentTopic = 'ISE589/BBK/Lab3/Motor/Direction' THEN
+	    IF currentData = TRUE THEN 
+	        _IO_EM_DO_01 := TRUE;
+	    ELSE
+	        _IO_EM_DO_01 := FALSE;
+	    END_IF;
 
+	END_IF;
+ELSE
+	_IO_EM_DO_00 := FALSE;
+	
 END_IF;
 END_PROGRAM

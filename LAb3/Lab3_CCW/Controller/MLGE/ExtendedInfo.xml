@@ -15,6 +15,9 @@
   <AcfElementGuid Guid="5fe772c0-1eba-4953-9de2-8c6e9b911e5e">
     <File>Motor_control.AcfMlge</File>
   </AcfElementGuid>
+  <AcfElementGuid Guid="67ce0d48-dd15-4888-856a-aa96ddef1667">
+    <File>MQTT_Client_control.AcfMlge</File>
+  </AcfElementGuid>
   <AcfElementGuid Guid="ca7ba770-0234-4625-b4e9-749ee223dfd7">
     <File>MQTT_Client.AcfMlge</File>
   </AcfElementGuid>
